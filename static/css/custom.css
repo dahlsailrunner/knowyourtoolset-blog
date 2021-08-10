@@ -1,0 +1,41 @@
+div.notices {
+    border-top-width: 2rem;
+    border-top-style: solid;
+    color: #666;
+    margin: 2rem 0;
+    padding-bottom: .1px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+div.notices > * {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+div.notices > div.label {
+    color: #fff;
+    margin-bottom: 1rem;
+    margin-top: -1.75rem;
+    font-weight: bold;
+}
+div.notices > div.label:first-child:before {
+    
+    font-weight: 900;
+    margin-left: -.35rem;
+    margin-right: .35rem;
+}
+div.notices.info {
+    border-color: #6AB0DE;
+    background: #E7F2FA;
+}
+div.notices.warning {
+    border-color: rgba(217, 83, 79, 0.8);
+    background: #FAE2E2;
+}
+div.notices.note {
+    border-color: #F0B37E;
+    background: #FFF2DB;
+}
+div.notices.tip {
+    border-color: rgba(92, 184, 92, 0.8);
+    background: #E6F9E6;
+}
