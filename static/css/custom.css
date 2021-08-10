@@ -39,3 +39,10 @@ div.notices.tip {
     border-color: rgba(92, 184, 92, 0.8);
     background: #E6F9E6;
 }
+
+img.img-med {
+    width: 600px;    
+}
+img.img-shadow {
+    box-shadow:5px 5px 5px 5px #999;
+}
