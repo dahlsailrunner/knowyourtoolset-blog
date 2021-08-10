@@ -15,4 +15,6 @@ Hit my LinkedIn profile above to see my work history.
 I'm a Pluralsight author as well and you can see my courses here:
 https://app.pluralsight.com/profile/author/erik-dahl
 
+![](/images/personal-headshot.jpg)
+
 
