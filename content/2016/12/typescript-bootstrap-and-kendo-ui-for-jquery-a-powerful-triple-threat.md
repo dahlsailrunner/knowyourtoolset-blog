@@ -2,8 +2,8 @@
 title: "TypeScript, Bootstrap and Kendo UI for jQuery - a powerful triple-threat!" # Title of the blog post.
 date: 2016-12-05T11:05:20-05:00 # Date of post creation.
 description: "Article description." # Description used for search engine.
-thumbnail: "/images/path/thumbnail.png" # Sets thumbnail image appearing inside card on homepage.
-shareImage: "/images/path/share.png" # Designate a separate image for social media sharing.
+thumbnail: "/images/form-awesome.png" # Sets thumbnail image appearing inside card on homepage.
+shareImage: "/images/form-awesome.png" # Designate a separate image for social media sharing.
 codeMaxLines: 15 # Override global value for how many lines within a code block before auto-collapsing.
 codeLineNumbers: false # Override global value for showing of line numbers within code block.
 tags:
@@ -18,7 +18,7 @@ Creating great front-end web user experiences can be very intimidating – from 
 
 All of the code and a working project can be found in [my GitHub repository](https://github.com/dahlsailrunner/FormAwesome).
 
-# Background
+## Background
 I come from a background of ASP.NET server-side web technologies like WebForms and MVC. You can do AJAX-y kind of things there, but you really have to think about it. The technologies I’m describing here are a GREAT way to also start to bridge the gap toward full SPA-type applications using larger frameworks like Angular and Aurelia. Also, if you’ve started to add JavaScript code to your web pages, it can quickly get out of control and very hard to maintain if you have complex logic and interactions. The technologies here provide some *awesome* benefits that help guide you down the path to better user experiences. They include:
 
 * Awesome layout and styling elements from Bootstrap — this enables responsive design (i.e. mobile and desktop-friendly layouts on your pages)
@@ -29,10 +29,10 @@ I come from a background of ASP.NET server-side web technologies like WebForms a
 * Strong design-time IntelliSense and error-checking through the use of TypeScript, plus a great debugging experience
 
 {{% notice note Note %}}
-This post is not an exhaustive exploration of all of the themes, components, or capabilities of ANY of the technologies involved, but should serve as a good launching platform for you. For more information on each of the different libraries and how to dig deeper, see the “Know Your Resources” section below.
+This post is not an exhaustive exploration of all of the themes, components, or capabilities of ANY of the technologies involved, but should serve as a good launching platform for you. For more information on each of the different libraries and how to dig deeper, see [Know Your Resources]({{< ref "#know-your-resources" >}}) below.
 {{% /notice %}}
 
-# Setup
+## Setup
 Ultimately, you can perform the setup however you want. At some point, you need the following libraries in your project:
 
 * jQuery (I’m using 3.1.1 in this post)
@@ -75,7 +75,7 @@ Lastly, add a `tsconfig.json` to configure the TypeScript compiler for your proj
 }
 ```
 
-# Hello World, View Model Style
+## Hello World, View Model Style
 A few preliminary explanations are in order regarding how these different components all wire together.
 
 You will have a view — generally the same cshtml that that you would otherwise write. But in our case we won’t really have ANY JavaScript on the page other than the view models we will be including. As an aside, this is better for tight security policies because you won’t need “unsafe inline” for your JavaScript. Woo hoo!
@@ -135,7 +135,7 @@ You should see something that looks like this when you run:
 
 ![::img-center img-shadow](/images/hello-viewmodel.png)
 
-# Add Some Kendo Form Elements
+## Add Some Kendo Form Elements
 As noted, now that everything is set up, it starts getting pretty fun, and the limits are the controls available and your imagination.
 
 A couple of nice first quick hits are to add a dropdown list and a date picker. Lets say we’d like to initialize the value of the drop-down picker in the view model (this could be from an AJAX request) and then fire a method on the view model when the drop-down value changes. All of this is SUPER-EASY.
@@ -180,12 +180,12 @@ export class ViewModel extends kendo.data.ObservableObject {
 
 Note that there isn’t a value on the view model to hold the value of the datepicker. Just add a Date field and bind the value on your view to it! You could even bind the datepicker’s `change` event to a function in the same way we did for the dropdownlist!
 
-For more details about the data- syntax you would use in different situations, see the “Know Your Resources” section below, where I point out the data- section of the Kendo documentation for you.
+For more details about the data- syntax you would use in different situations, see [Know Your Resources]({{< ref "#know-your-resources" >}}) below, where I point out the data- section of the Kendo documentation for you.
 
-# Add a List Using Templates
+### Add a List Using Templates
 So Bootstrap offers a nice dropdown button, and I wanted to see if I could bind drop-down options to something I set up inside the view model (which ultimately could be an AJAX API call, or whatever else. We will discuss the view, the view model, and the template in detail below.
 
-### The View
+#### The View
 For this, I started with the basic Bootstrap HTML syntax for a drop-down button, shown below, and then added the binding markup for the source of the options and the template.
 
 ```html
@@ -203,7 +203,7 @@ For this, I started with the basic Bootstrap HTML syntax for a drop-down button,
 ```
 Note two things about the above code block — the data-bind and data-template attributes, as well as the two commented out `a` tags. An `a` tag like the commented out ones is what we are trying to create — except that when the option is clicked we want to add an object (a new "shelf") to a list we are watching — a Kendo `ObservableArray`; to do this, we want to bind the `click` event to a function on the view model.
 
-### The View Model
+#### The View Model
 In the view model code below, the `StringValue` class was created because I was not able to figure out how to bind Kendo template content to a simple string array. By creating the `StringValue` class with a single field called `stringValue` I was able to wire up the template binding with no trouble at all.
 
 The `ViewModel` class is where everything happens. The constructor method populates the `shelfOptions` field with the returned array of `StringValue` items in the method below — this could pretty easily be the returned content from an API. Also in the constructor is the initialization of an `ObservableArray` that we will add to when the drop-down button choice is clicked.
@@ -247,7 +247,7 @@ export class ViewModel extends kendo.data.ObservableObject {
 } 
 ```
 
-### The Template
+#### The Template
 A Kendo template is created with the use of a script tag, giving it an id attribute that is used to reference the template, and then defining content.
 
 The content of the template below is just the drop-down option for the Bootstrap button group — with data bindings for its HTML content (the stuff that will be placed between the tag markers) and the click method.
@@ -258,7 +258,7 @@ The content of the template below is just the drop-down option for the Bootstrap
 </script>
 ```
 
-# Going further….
+## Going further….
 You may have noticed that the `addNewShelf` method adds an item to an `ObservableArray`. If so, good on ya’! 🙂
 The div that provides a placeholder for viewing the items in that `ObservableArray` is as follows:
 
@@ -352,7 +352,7 @@ This is what it looks like with some basic choices and data entry done:
 
 ![::img-shadow img-med img-center](/images/form-awesome.png)
 
-# Know Your Resources
+## Know Your Resources
 One of the most important tools at your disposal is the online documentation and resources around this technology.
 
 The Kendo documentation and resources are the most complex, and here are some of the key resources that I continue to go back to regularly:
@@ -365,7 +365,7 @@ The Kendo documentation and resources are the most complex, and here are some of
 
 To understand more about the differences between the open-source version of the Kendo library versus the professional one, see the [Kendo Open Source information page](http://www.telerik.com/kendo-ui/open-source-core%20(product%20page)).
 
-# Conquer the World
+## Conquer the World
 Between the Bootstrap layout, styling, and components, along with the Kendo UI framework and open-source controls, you have a LOT of tools at your disposal to make the creation of great user experiences a snap! And by using TypeScript, you can get strong typing to provide you with design-time rather than run-time checking of MANY of the types of problems that you might otherwise encounter only if/when a line of code is executed.
 
 Happy coding!!
