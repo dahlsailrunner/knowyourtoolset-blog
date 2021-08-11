@@ -9,7 +9,7 @@ codeMaxLines: 20 # Override global value for how many lines within a code block 
 codeLineNumbers: false # Override global value for showing of line numbers within code block.
 figurePositionShow: true # Override global value for showing the figure label.
 tags:
-  - ASP.NET Core
+  - ASP.NET
   - API
 # comment: false # Disable comment if false.
 ---
