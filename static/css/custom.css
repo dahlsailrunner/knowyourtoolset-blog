@@ -40,9 +40,14 @@ div.notices.tip {
     background: #E6F9E6;
 }
 
-img.img-med {
+.img-med {
     width: 600px;    
 }
-img.img-shadow {
-    box-shadow:5px 5px 5px 5px #999;
+.img-shadow {
+    box-shadow: 2px 5px 5px 5px #999;
 }
+.img-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;    
+  }

@@ -22,7 +22,7 @@ I just recently had the privilege of creating a new course for Pluralsight calle
 Look at the commit history for some of the changes to the original code that built all of the below items up.
 
 {{% notice tip Tip %}}
-In my [next post]({{< ref "post/moving-authentication-from-an-asp-net-site-into-identityserver4" >}}) I will move all of this ASP.NET Core Identity goodness into a standalone IdentityServer4 (OpenID-Connect / OAuth2) instance that separates the authentication concerns into an application that can support any of your applications – like SPAs, machine-to-machine auth needs, and more.
+In my [next post]({{< ref "2020/11/moving-authentication-from-an-asp-net-site-into-identityserver4" >}}) I will move all of this ASP.NET Core Identity goodness into a standalone IdentityServer4 (OpenID-Connect / OAuth2) instance that separates the authentication concerns into an application that can support any of your applications – like SPAs, machine-to-machine auth needs, and more.
 {{% /notice %}}
 
 ## More Than 10 "Nuggets" 
@@ -48,7 +48,7 @@ Here’s a listing of them – the list is almost a “cookbook” where you can
 * **Rights based authorization** (this involves a custom policy provider and handler)
 * **MFA enrollment and challenge authorization requirements** – either require a user to be enrolled in MFA, or go further and
 require an MFA challenge during their login session to access pages / features
-* ([Next post]({{< ref "post/moving-authentication-from-an-asp-net-site-into-identityserver4" >}})) Moving all of the above (except the Authorization policies) into an IdentityServer4 instance
+* ([Next post]({{< ref "2020/11/moving-authentication-from-an-asp-net-site-into-identityserver4" >}})) Moving all of the above (except the Authorization policies) into an IdentityServer4 instance
 
 I discuss each of the above items in a little more detail on the readme of the github repo – and they’re all shown and explained in the course that I mentioned.
 
