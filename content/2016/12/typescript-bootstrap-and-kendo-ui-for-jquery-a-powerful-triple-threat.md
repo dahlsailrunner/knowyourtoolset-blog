@@ -201,14 +201,22 @@ For this, I started with the basic Bootstrap HTML syntax for a drop-down button,
     </div>
 </div>
 ```
-Note two things about the above code block — the data-bind and data-template attributes, as well as the two commented out `a` tags. An `a` tag like the commented out ones is what we are trying to create — except that when the option is clicked we want to add an object (a new "shelf") to a list we are watching — a Kendo `ObservableArray`; to do this, we want to bind the `click` event to a function on the view model.
+Note two things about the above code block — the `data-bind` and `data-template` attributes, as well as the two commented 
+out `<a>` tags. An `<a>` tag like the commented out ones is what we are trying to create — except that when the option is 
+clicked we want to add an object (a new "shelf") to a list we are watching — a Kendo `ObservableArray`; to do this, we want 
+to bind the `click` event to a function on the view model.
 
 #### The View Model
-In the view model code below, the `StringValue` class was created because I was not able to figure out how to bind Kendo template content to a simple string array. By creating the `StringValue` class with a single field called `stringValue` I was able to wire up the template binding with no trouble at all.
+In the view model code below, the `StringValue` class was created because I was not able to figure out how to bind Kendo template content to a 
+simple string array. By creating the `StringValue` class with a single field called `stringValue` I was able to wire up the template 
+binding with no trouble at all.
 
-The `ViewModel` class is where everything happens. The constructor method populates the `shelfOptions` field with the returned array of `StringValue` items in the method below — this could pretty easily be the returned content from an API. Also in the constructor is the initialization of an `ObservableArray` that we will add to when the drop-down button choice is clicked.
+The `ViewModel` class is where everything happens. The constructor method populates the `shelfOptions` field with the returned array 
+of `StringValue` items in the method below — this could pretty easily be the returned content from an API. Also in the constructor 
+is the initialization of an `ObservableArray` that we will add to when the drop-down button choice is clicked.
 
-We have a method on the view model called addNewShelf that will be invoked when a drop-down choice is made. This method creates a new `Shelf` object and adds it to the `ObservableArray` that we initialized in the constructor.
+We have a method on the view model called addNewShelf that will be invoked when a drop-down choice is made. This method creates a new `Shelf` object 
+and adds it to the `ObservableArray` that we initialized in the constructor.
 
 ```typescript
 xport class StringValue {
