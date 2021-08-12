@@ -1,5 +1,5 @@
 ---
-title: "Comparing OpenAPI / Swagger, Graphql, and gRPC" # Title of the blog post.
+title: "Comparing OpenAPI / Swagger, GraphQL, and gRPC" # Title of the blog post.
 date: 2020-03-20T07:42:38-05:00 # Date of post creation.
 description: "A quick comparison of OpenAPI/Swagger, GraphQL, and gRPC as web request protocols." # Description used for search engine.
 featured: true # Sets if post is a featured post, making appear on the home page side bar.
