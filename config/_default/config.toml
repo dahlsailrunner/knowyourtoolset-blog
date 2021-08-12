@@ -1,4 +1,4 @@
-baseurl = "https://beta.knowyourtoolset.com/"  # Include trailing slash
+baseurl = "https://knowyourtoolset.com/"  # Include trailing slash
 copyright = "Copyright © 2015-2021, Erik Dahl; all rights reserved."
 # canonifyurls = true
 paginate = 10
