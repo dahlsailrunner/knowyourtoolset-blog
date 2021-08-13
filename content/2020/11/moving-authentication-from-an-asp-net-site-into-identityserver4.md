@@ -1,5 +1,5 @@
 ---
-title: "Moving Authentication From an Asp Net Site Into Identityserver4" # Title of the blog post.
+title: "Moving Authentication From an ASP.NET Site Into IdentityServer4" # Title of the blog post.
 date: 2020-11-05T07:45:24-05:00 # Date of post creation.
 description: "Getting authentication logic out of an ASP.NET Core website and into a centralized IdentityServer4 instance." 
 featured: true # Sets if post is a featured post, making appear on the home page side bar.

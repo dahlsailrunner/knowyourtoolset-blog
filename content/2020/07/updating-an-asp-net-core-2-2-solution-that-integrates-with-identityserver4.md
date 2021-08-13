@@ -1,5 +1,5 @@
 ---
-title: "Updating an ASP.NET Core 2.2 Solution That Integrates With Identityserver4" # Title of the blog post.
+title: "Updating an ASP.NET Core 2.2 Solution That Integrates With IdentityServer4" # Title of the blog post.
 date: 2020-07-17T14:25:02-05:00 # Date of post creation.
 description: "Article description." # Description used for search engine.
 codeMaxLines: 10 # Override global value for how many lines within a code block before auto-collapsing.

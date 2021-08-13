@@ -1,5 +1,5 @@
 ---
-title: "Authoring Short Targeted Videos"
+title: "Authoring Short, Targeted Videos"
 date: 2021-03-28T16:32:15-05:00 # Date of post creation.
 description: "How to create short targeted videos to show a tehcnology topic." # Description used for search engine.
 toc: false # Controls if a table of contents should be generated for first-level links automatically.

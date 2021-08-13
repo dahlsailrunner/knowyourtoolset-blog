@@ -1,5 +1,5 @@
 ---
-title: "A (Fairly) Deep Dive Into Asp Net Identity and 10+ 'Nuggets'" # Title of the blog post.
+title: "A (Fairly) Deep Dive Into ASP.NET Identity and 10+ 'Nuggets'" # Title of the blog post.
 date: 2020-11-04T13:25:37-05:00 # Date of post creation.
 description: "A handful of useful features within ASP.NET Core Identity and how to put them to use" # Description used for search engine.
 toc: false # Controls if a table of contents should be generated for first-level links automatically.
