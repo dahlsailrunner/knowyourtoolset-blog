@@ -4,6 +4,7 @@ copyright = "Copyright © 2015-2021, Erik Dahl; all rights reserved."
 paginate = 10
 theme = "hugo-clarity"
 disqusShortname = ""
+enableEmoji = true
 
 DefaultContentLanguage = "en"
 # [languages]
