@@ -159,7 +159,7 @@ If you’re using the MesloLGS NF font, you can use [this handy cheatsheet](http
 
 If you’re on Windows, you can also use the Character Map app and choose the MesloLGS NF font within it (which is what I did since I didn’t know about the cheatsheet first). Then it’s just a matter of looking through all of the different icons available (there are a LOT) until you find one that you want to use for the prefix (or postfix).
 
-![](/images/k8s-cluster-to-terminal/char-map.png)
+![::img-med img-center](/images/k8s-cluster-to-terminal/char-map.png)
 
 You provide the value for the character (and I put a leading and trailing space on it), and you should be good to go!
 
