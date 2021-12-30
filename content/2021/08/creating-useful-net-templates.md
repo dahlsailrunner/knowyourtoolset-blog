@@ -33,6 +33,7 @@ This article will be jam-packed with helpful information surrounding the notion 
 All of the above will be discussed in the context of a new template pack that I just created – and part of this article will be showing you how to use this pack.
 
 ## Why Use Templates?
+
 Here’s a list of situations where having some templates at your fingertips comes in really handy:
 
 * **Assistance in breaking down monolith(s)** — if you’re working in an effort like this, being able to create new projects / solutions fast definitely helps – especially if you have your own cross-cutting concerns (e.g. logging, security, data access, test approach) already in the templates
@@ -53,23 +54,26 @@ The readme includes a badge / link to the package on NuGet, and two templates:
 I encourage you to do at least the simple steps that follow – it will take 5 minutes or so unless you find yourself exploring a bit. Note that the content of my templates is not REALLY the point of this article. Just see how they work and get a sense of what you might create on your own. If you find these templates helpful – that’s a nice bonus!
 
 {{% notice note Note %}}
-You need to have the [.NET SDK](https://dotnet.microsoft.com/download) installed to do this – the templates use .NET Standard 2.1 and .NET 5
+You need to have the [.NET SDK](https://dotnet.microsoft.com/download) installed to do this – the templates use .NET Standard 2.1 and .NET 6
 {{% /notice %}}
 
 ### Install the templates
-```
+
+```bash
   dotnet new -i KnowYourToolset.Templates
 ```
+
 This will add two new items to your list of available templates. The short names are as shown above and they will show up somewhere in the middle of the list of available templates you see when the command finishes.
 
 ### Use the `kyt-package` template
+
 In the terminal, change into some directory where you can put demo projects. I use `C:\users\<username>\source\demos`.
 
 Come up with a name for a package, maybe something like `Sample.Package`. If you’ve got something you were meaning to create as a NuGet package, use that. 🙂
 
 Then use the following command (replace `Sample.Package` with whatever you just decided on as the name for your package):
 
-```
+```bash
 dotnet new kyt-package -o Sample.Package
 ```
 
@@ -85,10 +89,13 @@ Feel free to add some code. The steps below are what you would do if you want to
 There are more details in the Instructions.md and readme, but by now you get the point of this package.
 
 ### Use the `kyt-backend` template
+
 In your “demos” directory (or whatever you decided), here’s the command to use this template (come up with your own name for an API if you like:
-```
+
+```bash
 dotnet new kyt-backend -o BookClub.BackEnd
 ```
+
 This will create a new folder called `BookClub.BackEnd`, and you can open the solution created there. It’s immediately runnable so just go ahead and run it and you should see a Swagger / OpenAPI UI. Try these things:
 
 * Try the Weather controller `GET` method (the only one) – use anything for a postal code – doesn’t matter what. You’ll get a `401` response.
@@ -99,7 +106,8 @@ This will create a new folder called `BookClub.BackEnd`, and you can open the so
 * Note the health check endpoint (`/health`)
 
 The logs in the project are written to the console (go ahead and check) but they are ALSO written to a local instance of Seq – to get one of these running if you don’t already have it (you need Docker Desktop installed):
-```
+
+```bash
 docker pull datalust/seq
 docker run -d --name seq -e ACCEPT_EULA=Y -p 5341:80 datalust/seq:latest
 ```
@@ -110,19 +118,22 @@ BUT WAIT! There’s one more thing! 🙂
 
 In the “demos” directory again, use the following command to create a version of the solution that includes Docker support baked in (assuming you have [Docker Desktop](https://www.docker.com/products/docker-desktop) installed) — note the `-D` flag:
 
-```
+```bash
 dotnet new kyt-backend -D -o BookClub.Wow
 ```
 
 If you open this new solution that was created, and change the run profile to Docker, you’re ready with a containerized version of the same solution. This optional -D flag is something we’ll look at more below. NOTE: If you’re using Seq, modify the Program.cs file to write to the new location as indicated by the comments at the bottom of the file.
 
 ### (Optional) Uninstall the Templates
+
 If you want to get rid of these templates, it’s easy:
-```
+
+```bash
 dotnet new -u KnowYourToolset.Templates
 ```
 
 ## Setting Up a Template Pack
+
 The basic documentation for setting up a template pack is here if you want to see it.
 
 The basic steps:
@@ -137,12 +148,15 @@ The basic steps:
 * Get it published
 
 ### .csproj or .nuspec??
+
 I used a .nuspec file instead of the .csproj that recommended in the MS docs. Why? I wanted to include .gitignore files in the templates to make it simpler on repo creation and push. I wasn’t able to figure out how to include those files using dotnet pack, but the nuget pack command includes a -NoDefaultExcludes option that achieved this. (PRs welcome if you know of a way I can do this.)
 
 ### The Readme
+
 Maybe it goes without saying, but I believe it’s super important to get a good readme in your repo. Tell people how to use your template pack — what are the available templates, why they’re useful, and how to instantiate them.
 
 ### .nuspec File Contents and Some Notes
+
 Here’s the .nuspec file I’m using (the .csproj is also in the repo and is similar but not used due to the .gitignore issue above):
 
 ```xml
@@ -178,25 +192,29 @@ Most of the content above is pretty straight-forward, but a couple of items are 
 * The `<version>` is something you need to specifically set each time you publish. You may get 403 errors if you try to publish the same version more than once.
 
 ### Building and Publishing the Template Pack
+
 You can create the template pack locally if you want to try it out yourself before publishing publicly.
 
 If you’re using a .nuspec file like I am with this pack, you need the NuGet CLI executable on your machine and in your PATH.
 
 Then you can use the following command to build the template pack:
-```
+
+```bash
 nuget pack *.nuspec -NoDefaultExclusions
 ```
 
 It will create a `.nupkg` file (with a version number) in your current directory.
 
 To install the template pack:
-```
+
+```bash
 dotnet new -i ./YOUR_NUPKG_FILENAME
 ```
 
 To publish the template pack, a nuget push is involved. The GitHub workflow that I have in my pack would work fine for you if you want to use NuGet.org, but if you are publishing to a different location you would need to make changes. But ***get something hooked up where this will auto-publish when you update the main branch of your template repository!***
 
 ## Creating Templates
+
 You’ll put the actual templates you want to create in the templates directory you created for the template pack.
 
 These are almost like any other project you would create. The main differences are:
@@ -207,6 +225,7 @@ These are almost like any other project you would create. The main differences a
 * Another recommendation: include workflow / pipeline file(s)
 
 ### Creating the Project / File / Solution for the template
+
 The content you create in the templates directory will become the foundation for your templates. To create the templates in the pack above, I used Visual Studio with **File->New project/solution** and created both the `KnowYourToolset.Package` template and the `KnowYourToolset.BackEnd` template.
 
 **PRO TIP 1:** Include a “.” in your project/solution name! If you don’t include a “.” in the project / solution name, and someone provides a `-o` parameter value of “MyOrganization.MyDomain” (with a “.” in it), the templating engine has trouble renaming things properly. For more information, see this page: https://github.com/dotnet/templating/wiki/Naming-and-default-value-forms
@@ -214,6 +233,7 @@ The content you create in the templates directory will become the foundation for
 **PRO TIP 2:** Keep these projects / solutions debug-able and buildable! As I was developing the templates above, I would run and debug them in Visual Studio just like any other project. The names are a little “meta” to be sure, but the general experience is the same and this enables you to modify the templates with more confidence and simplicity.
 
 ### The template.json file
+
 I’ll walk through both `template.json` files in the template pack I created — they need to be in a directory called `.template.config`. Here’s the simpler one for the NuGet package template:
 
 ```json
@@ -229,6 +249,7 @@ I’ll walk through both `template.json` files in the template pack I created �
   "preferNameDirectory": true
 } 
 ```
+
 * `classifications`: This is a list of describers for your template, and if you start all of them with the same text they will sort together in the dotnet new output.
 * `identity`: This is a unique describer for your package — cannot overlap with other templates (yours or otherwise)
 * `shortName`: This is the value that developers will use with dotnet new to instantiate your template
@@ -309,16 +330,19 @@ Make sure you keep your templaate projects runnable / debug-able if you are usin
 For more information about the available options here (I definitely haven’t covered them all, see the wiki here: https://github.com/dotnet/templating/wiki (especially the page called **Reference for template.json**).
 
 ### Instructions and Readme
+
 For templates, I like having a distinction between “Instructions” and the “Readme”. The Readme should become the Readme for the new instance of the template. Like if I created a template for a BookClub application by doing:
 
-```
+```bash
 dotnet new kyt-backend -o BookClub.BackEnd
 ```
+
 The Readme for that project should have some info about the BookClub domain, how to run my project and any rules for contributing to it. That content might be totally different for a “Heroes” back end created with the same template.
 
 In contrast, the “Instructions” are what do with the template once you’ve created it. In theory, this file could be completely removed once the new project has gotten established.
 
 ### Pipeline / Workflow Files
+
 Another recommendation I have is to include pipeline or workflow files when possible. An example is the included GitHub workflow file to publish a NuGet package in the `kyt-package` template.
 
 I haven’t done this yet for the API template, but here are the possibilities there:
@@ -327,6 +351,7 @@ I haven’t done this yet for the API template, but here are the possibilities t
 * A workflow for the containerized version that will publish a container image to hub.docker.com when main is updated
 
 ## Template Ideas
+
 This has been a longer article than I intended, so thanks if you’ve stuck with it for this long!! 🙂
 
 Here are some ideas for templates you might want to create on your own:
