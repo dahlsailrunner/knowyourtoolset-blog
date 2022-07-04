@@ -51,7 +51,7 @@ app.UseSwagger()
 
 If you've created a new web api, setting it up to support bearer token authentication is pretty simple.
 
-You need to add a NuGet package to `Microsoft.AspNetCore.Authentication.JwtBearer` as a first step.
+You need to add a NuGet package reference for `Microsoft.AspNetCore.Authentication.JwtBearer` as a first step.
 
 Then in `Program.cs` add code that looks like the following:
 
