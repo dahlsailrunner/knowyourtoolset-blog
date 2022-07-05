@@ -22,7 +22,7 @@ tags:
 
 Using JWT bearer token authentication for your ASP.NET Core API projects is pretty standard stuff these days, and I've
 done it many times - mostly with tokens from [Duende IdentityServer](https://duendesoftware.com/products/identityserver).
-When I tried to update the code and configuration to use Auth0 though, I kept getting a 401 response
+When I tried to update the code and configuration to use [Auth0](https://auth0.com/) though, I kept getting a 401 response
 after authenticating properly, with a message about an `invalid_token`
 and the token itself was a JWT but it had an empty payload -- the part of the JWT that contains the claims.
 
