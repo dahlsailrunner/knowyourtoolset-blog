@@ -20,7 +20,7 @@ clusters for development and production, maybe different
 applications, or whatever.
 
 Each cluster probably has a `kubeconfig` file that you
-can you to interact with *that cluster*, but changing context
+can use to interact with *that cluster*, but changing context
 based on different files is a bit cumbersome. Options include
 changing environment variable for each context change or
 using the `--kubeconfig` command line option with most
