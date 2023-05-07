@@ -255,6 +255,8 @@ determine that without me having to update code!
 
 ## Iteration 3: Add a Sub-Command for the Sync Tests
 
+*Here's the code for this iteration: [https://github.com/dahlsailrunner/async-vs-sync/tree/cli-iteration-3](https://github.com/dahlsailrunner/async-vs-sync/tree/cli-iteration-3)*
+
 To test the syncrhonous version of the API without losing support for the
 async version, I opted to use the "sub-command" functionality of System.CommandLine.
 
