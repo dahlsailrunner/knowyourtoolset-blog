@@ -25,7 +25,7 @@ seconds, making a total of 3,000 requests.
 The async code behaved much better under this load, but
 at what level of load did this really become true?
 
-I hard-cded both the test to be run as well as the
+I hard-coded both the test to be run as well as the
 injection rate for the requests.
 
 In this post I want to walk through creating a more
