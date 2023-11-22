@@ -43,6 +43,9 @@ div.notices.tip {
 .img-med {
     width: 600px;    
 }
+.img-small {
+    width: 200px;    
+}
 .img-shadow {
     box-shadow: 2px 5px 5px 5px #999;
 }
