@@ -2,8 +2,8 @@
 title: "Journey to Connect-4 on Rasberry Pi 2 With Pi Sense Hat" # Title of the blog post.
 date: 2016-05-07T13:57:23-05:00 # Date of post creation.
 description: "Creating the 'Connect-4' game with some students using Python on a Rasberry Pi 2 device with the Pi Sense Hat peripheral." # Description used for search engine.
-thumbnail: "/images/check-win.jpg" # Sets thumbnail image appearing inside card on homepage.
-shareImage: "/images/check-win.jpg" # Designate a separate image for social media sharing.
+thumbnail: "/images/check-win.png" # Sets thumbnail image appearing inside card on homepage.
+shareImage: "/images/check-win.png" # Designate a separate image for social media sharing.
 codeMaxLines: 15 # Override global value for how many lines within a code block before auto-collapsing.
 codeLineNumbers: false # Override global value for showing of line numbers within code block.
 figurePositionShow: true # Override global value for showing the figure label.
@@ -21,7 +21,7 @@ If you’re interested in getting started I’ll include some links at the botto
 
 Here’s a picture of some of the gang when we were doing some LED work:
 
-![::img-med img-center](/images/pi-gang.jpg)
+![::img-center](/images/pi-gang.png)
 
 All of the code for this program, including the “getting started” logic, is located on [my GitHub repository](https://github.com/dahlsailrunner/connect-4-pi).
 
@@ -175,7 +175,7 @@ What we discovered is that for the other checks, if we just did the same thing b
 
 The logic is shown by the diagram below. Note that We don’t need to check UP from the dropped chip for the vertical win — we already know there is nothing above it. We count in each direction FROM THE DROPPED chip to see whether there is a win.
 
-![::img-med img-center](/images/check-win.jpg)
+![::img-center](/images/check-win.png)
 
 Here's the code:
 
