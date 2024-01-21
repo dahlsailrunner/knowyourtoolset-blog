@@ -4,6 +4,8 @@ date: 2024-01-18T05:51:55-05:00
 description: "Using WebApplicationFactory, XUnit fixtures, and Bogus data to perform automated integration tests against an ASP.NET Core API" 
 codeMaxLines: 30 .
 codeLineNumbers: true 
+thumbnail: "/images/test-output.png" 
+shareImage: "/images/test-output.png" 
 toc: true
 tags:
   - C#
