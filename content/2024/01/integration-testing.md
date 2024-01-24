@@ -1,5 +1,5 @@
 ---
-title: "Integration Testing for ASP.NET APIs (1/3)" 
+title: "Integration Testing for ASP.NET APIs (1/3) - Basics" 
 date: 2024-01-18T05:51:55-05:00 
 description: "Using WebApplicationFactory, XUnit fixtures, and Bogus data to perform automated integration tests against an ASP.NET Core API" 
 codeMaxLines: 30 .
@@ -409,7 +409,7 @@ public async Task HappyPathReturnsGoodData()
 ## Next Up... Data
 
 This post established some basic foundations for integration tests in ASP.NET Core
-APIs.  In the next post, we'll build on top of these concepts and add some data
+APIs.  In the [next post](../integration-testing-data), we'll build on top of these concepts and add some data
 to our APIs with both SQLite and Postgres and see how we can create integration
 tests for that. The exact same techniques as Postgres could be used for SQL Server.
 
