@@ -15,6 +15,7 @@ tags:
   - TestContainers
   - FluentValidation
   - SQLite
+  - Postgres
 ---
 
 {{% notice note "Where's the code?" %}}
@@ -460,7 +461,7 @@ a different database, including SQL Server, MySql, and more.
 
 ## Next...
 
-In the next post we'll get into how to add authentication and authorization
+In the [next post](../integration-testing-auth) we'll get into how to add authentication and authorization
 logic into the tests.  
 
 Stay tuned!
