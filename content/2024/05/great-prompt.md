@@ -70,6 +70,15 @@ to the file:
 oh-my-posh init pwsh | Invoke-Expression
 ```
 
+{{% notice note "Create Powershell Profile" %}}
+The following command will create a powershell profile if one doesn't already exist:
+
+```powershell
+if (!(Test-Path -Path $profile)) { New-Item -ItemType File -Path $profile -Force }
+```
+
+{{% /notice %}}
+
 There are additional notes in the [official docs](https://ohmyposh.dev/docs/installation/prompt),
 but you need to reload your profile for the new shell settings to take effect.
 
