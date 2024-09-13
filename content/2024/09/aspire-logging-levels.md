@@ -5,6 +5,8 @@ description: "Setting logging levels during local development for your entire di
 codeMaxLines: 30 .
 codeLineNumbers: true 
 toc: true
+thumbnail: "/images/sharedloglevels.png" 
+shareImage: "/images/sharedloglevels.png" 
 tags:
   - Aspire  
   - ASP.NET
