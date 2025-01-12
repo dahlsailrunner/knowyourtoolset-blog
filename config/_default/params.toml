@@ -27,7 +27,8 @@ codeLineNumbers = false
 enableMathNotation = false
 
 # directory(s) where your articles are located
-mainSections = ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"] # see config details here https://gohugo.io/functions/where/#mainsections
+mainSections = ["2015", "2016", "2017", "2018", "2019", "2020", 
+                "2021", "2022", "2023", "2024", "2025"] # see config details here https://gohugo.io/functions/where/#mainsections
 
 # center logo on navbar
 centerLogo = false # Set to "true" for centering or "false" for left aligned.
