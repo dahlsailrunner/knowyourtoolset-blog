@@ -309,7 +309,7 @@ method handles.
 
 {{% /notice %}}
 
-The final string is parsed into HTML by the `marked` library, and
+The final string is parsed into HTML by the [marked](https://marked.js.org/) library, and
 the `signal` (the `streamedMessages` variable) is updated.
 
 Also note that if you wanted to perform some logic when the final
