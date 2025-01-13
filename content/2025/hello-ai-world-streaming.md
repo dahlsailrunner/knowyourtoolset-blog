@@ -236,7 +236,7 @@ export class ChatService {
 }
 ```
 
-I'm using the Duende Backend For Frontend (BFF) security pattern
+I'm using the [Duende Backend For Frontend (BFF) security pattern](https://docs.duendesoftware.com/identityserver/v7/bff/)
 here to avoid making a remote API call with an exposed access token,
 but the concept above should be pretty clear.
 
