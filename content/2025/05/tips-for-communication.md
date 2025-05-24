@@ -196,4 +196,17 @@ At this point I even can help assess priority based on the additional context of
 the message and choose to deal with immediately or respond later when I'm not
 busy.
 
+## 11: Do Important Communications in Two Stages
+
+When crafting an important communication, create a first draft
+and then do one of two things - or both:
+
+* Come back to it later (best is the next day, after a night's sleep)
+* Ask for feedback from people whose opinions you value
+
+I did both of the above when writing this post. :wink:
+
+Often times a fresh perspective and a second set of eyes can
+help you refine your message or avoid a problematic phrase.
+
 Happy Communicating!  :smile:
