@@ -202,7 +202,7 @@ When crafting an important communication, create a first draft
 and then do one of two things - or both:
 
 * Come back to it later (best is the next day, after a night's sleep)
-* Ask for feedback from people whose opinions you value
+* Ask for feedback from people you trust
 
 I did both of the above when writing this post. :wink:
 
