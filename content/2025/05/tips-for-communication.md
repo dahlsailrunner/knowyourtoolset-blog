@@ -176,7 +176,7 @@ that to the initial activities of the project.  Even if you call the activities
 above "phase 1" that still may need a reference key to clearly call out exactly
 what you mean by that (in more than one place, potentially).
 
-## 10: In Messaging, Avoid "Hi"
+## 9: In Messaging, Avoid "Hi"
 
 As a final "bonus tip," I suggest not starting a new message communication with a
 single message like:
@@ -196,7 +196,7 @@ At this point I even can help assess priority based on the additional context of
 the message and choose to deal with immediately or respond later when I'm not
 busy.
 
-## 11: Do Important Communications in Two Stages
+## 10: Do Important Communications in Two Stages
 
 When crafting an important communication, create a first draft
 and then do one of two things - or both:
