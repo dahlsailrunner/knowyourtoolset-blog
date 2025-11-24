@@ -1,7 +1,7 @@
 ---
 title: "Logging Updates in .NET 8 and ASP.NET 8" # Title of the blog post.
 date: 2023-11-21T05:51:55-05:00 # Date of post creation.
-description: "Some nice updates to logging within ASP.NET 8." # Description used for search engine.
+summary: "Some nice updates to logging within ASP.NET 8." # Description used for search engine.
 codeMaxLines: 30 # Override global value for how many lines within a code block before auto-collapsing.
 codeLineNumbers: true # Override global value for showing of line numbers within code block.
 toc: true
@@ -38,7 +38,7 @@ from a sample `Program.cs` that follows will respond to API errors with a `Probl
 using sensible defaults, while logging the full details of the error to whatever logging provider
 you are using. No extra code or NuGet packages required!
 
-```c# 
+```c#
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddProblemDetails();  // THIS LINE

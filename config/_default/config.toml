@@ -1,10 +1,12 @@
 baseurl = "https://knowyourtoolset.com/"  # Include trailing slash
 copyright = "Copyright © 2015-2025, Erik Dahl; all rights reserved."
 # canonifyurls = true
-paginate = 10
 theme = "hugo-clarity"
 disqusShortname = ""
 enableEmoji = true
+
+[pagination]
+pagerSize = 10
 
 DefaultContentLanguage = "en"
 # [languages]

@@ -1,7 +1,7 @@
 ---
 title: "Using Tuples with Dapper" # Title of the blog post.
 date: 2023-04-16T05:51:55-05:00 # Date of post creation.
-description: "Using tuples as the generic arguments for Query calls with Dapper can avoid the need from some simple classes." # Description used for search engine.
+summary: "Using tuples as the generic arguments for Query calls with Dapper can avoid the need from some simple classes." # Description used for search engine.
 codeMaxLines: 30 # Override global value for how many lines within a code block before auto-collapsing.
 codeLineNumbers: true # Override global value for showing of line numbers within code block.
 thumbnail: "/images/tuple-dapper.png" # Sets thumbnail image appearing inside card on homepage.
@@ -80,7 +80,7 @@ You might be creating class *for no other reason* than to receive the results of
 given query. You might wonder where to put this class, and it might add "bloat"
 to your codebase.
 
-## An Alternative: Use Tuples!
+## An Alternative: Use Tuples
 
 For simple result sets (say 2-6 columns, tops) an alternative to creating a
 class/record only for the results of the query is to use a tuple.

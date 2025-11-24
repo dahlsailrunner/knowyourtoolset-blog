@@ -30,6 +30,8 @@ enableMathNotation = false
 mainSections = ["2015", "2016", "2017", "2018", "2019", "2020", 
                 "2021", "2022", "2023", "2024", "2025"] # see config details here https://gohugo.io/functions/where/#mainsections
 
+rss_summary = true
+
 # center logo on navbar
 centerLogo = false # Set to "true" for centering or "false" for left aligned.
 

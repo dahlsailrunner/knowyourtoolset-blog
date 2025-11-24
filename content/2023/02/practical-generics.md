@@ -1,7 +1,7 @@
 ---
 title: "Using Generics and Interfaces to Simplify C# Code" # Title of the blog post.
 date: 2023-02-03T05:51:55-05:00 # Date of post creation.
-description: "Practical examples of generics and interfaces that can be used to simplify some C# code." # Description used for search engine.
+summary: "Practical examples of generics and interfaces that can be used to simplify some C# code." # Description used for search engine.
 codeMaxLines: 30 # Override global value for how many lines within a code block before auto-collapsing.
 codeLineNumbers: true # Override global value for showing of line numbers within code block.
 #thumbnail: "/images/xxx.png" # Sets thumbnail image appearing inside card on homepage.

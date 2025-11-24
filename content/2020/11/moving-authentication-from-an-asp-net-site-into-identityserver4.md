@@ -1,7 +1,7 @@
 ---
 title: "Moving Authentication From an ASP.NET Site Into IdentityServer4" # Title of the blog post.
 date: 2020-11-05T07:45:24-05:00 # Date of post creation.
-description: "Getting authentication logic out of an ASP.NET Core website and into a centralized IdentityServer4 instance." 
+summary: "Getting authentication logic out of an ASP.NET Core website and into a centralized IdentityServer4 instance." 
 featured: true # Sets if post is a featured post, making appear on the home page side bar.
 toc: false # Controls if a table of contents should be generated for first-level links automatically.
 # menu: main
@@ -20,7 +20,7 @@ tags:
 # comment: false # Disable comment if false.
 ---
 
-**tl;dr: Just show me the code:** https://github.com/dahlsailrunner/secure-authentication-is4
+**tl;dr: Just show me the code:** <https://github.com/dahlsailrunner/secure-authentication-is4>
 
 I just published [a course regarding secure authentication in ASP.NET websites](https://app.pluralsight.com/library/courses/secure-account-authentication-practices-asp-dot-net-core), and the course and its code repo focused exclusively on ASP.NET Identity (in both Core and Framework projects). An early question came up regarding how to do this with a single-page application (SPA) like an Angular app.
 
@@ -35,11 +35,12 @@ The code there demonstrates many aspects of ASP.NET Identity and various securit
 
 But the code stopped there — moving authentication into a standalone identity service was not covered or discussed. So I created a new GitHub repository which would do exactly that — move the authentication and ASP.NET Identity functionality into an application running IdentityServer4 – and it runs this identity service by using docker-compose.
 
-The resulting repo is here: https://github.com/dahlsailrunner/secure-authentication-is4
+The resulting repo is here: <https://github.com/dahlsailrunner/secure-authentication-is4>
 
 There are lots of notes in the `README` for the repo, and some other clarifications are below.
 
 ## Creating an IdentityServer4 Project
+
 I started the move by creating a new empty repository and adding a new solution to it, along with a new ASP.NET Core project to it. The [quickstart documentation for IdentityServer4](https://identityserver4.readthedocs.io/en/latest/quickstarts/0_overview.html) has a very good walkthrough on how to set up IdentityServer4 in an application and I don’t want to repeat that documentation here.
 
 Short version:
@@ -51,7 +52,7 @@ Short version:
 
 ## Moving ASP.NET Identity Authentication into the IdentityServer
 
-I’ve added a bunch of notes about this here: https://github.com/dahlsailrunner/secure-authentication-is4#identityserver4-notes
+I’ve added a bunch of notes about this here: <https://github.com/dahlsailrunner/secure-authentication-is4#identityserver4-notes>
 
 The notes kind of boil down to this:
 
@@ -60,8 +61,8 @@ The notes kind of boil down to this:
 * Move the custom Identity folder with all of the `CustomUserStore` and other custom files
 * Modify the original project to refer to the new IdentityServer as its OpenId-Connect (oidc) provider. This last is described here.
 
-
 ## Why Docker Compose?
+
 When developing “interesting” (read: real world) projects, there are almost always some kind of setup steps to be completed to enable running and debugging the solution. For this identity service, there are a few things at play here:
 
 * **Email verification:** we need to be able to send an email, view its contents, and click links within them.
@@ -80,10 +81,10 @@ The minimum steps here will be:
 * Then just run the project(s)!
 
 ## Setting Up Docker Compose
+
 The “end state” of what will end up running is shown in the diagram here along with an abbreviated version of the `docker-compose.yml` file.
 
 ![](/images/aspnet-identityserver4/Docker-Compose-IdentityServer.png)
-
 
 The blue box here represents everything running via `docker-compose`. A network internal to docker compose is created, and each service can also be exposed to the host (meaning: things running outside the compose environment).
 
@@ -96,6 +97,7 @@ The same concept drives the database connection strings in the projects. `Globom
 Lots of notes regarding nginx, SSL, and other aspects are all included in the readme of the repo.
 
 ## SQL Server in Docker and Timing
+
 One interesting (and challenging) aspect of using an existing user database within the docker-compose environment was figuring out a way to have the database set up when the application starts. Here are the key points that led to success:
 
 * **Wait for SQL Server to be started.** This varied from 15-50 seconds, and I didn’t want to just say “wait for 60 seconds” to cover my bases — I wanted to wait until it was running. This is achieved by the wait-for-it.sh script, and it uses `globsql:1433` as its input.

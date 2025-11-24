@@ -1,7 +1,7 @@
 ---
 title: "Creating Useful .NET Templates" 
 date: 2021-08-09T15:29:04-05:00 
-description: "Creating .NET templates that use the templating enging and GitHub actions for NuGet packages and API projects." 
+summary: "Creating .NET templates that use the templating enging and GitHub actions for NuGet packages and API projects." 
 featured: true 
 toc: true
 # menu: main
@@ -18,7 +18,7 @@ tags:
   - templates
 ---
 
-***tl;dr - just show me the code:*** https://github.com/dahlsailrunner/knowyourtoolset-templates
+***tl;dr - just show me the code:*** <https://github.com/dahlsailrunner/knowyourtoolset-templates>
 
 Templates in .NET are a very helpful feature that enable you to create new files, projects, or even whole solutions with some form of the dotnet new command. I have created and evolved some templates over the past few years and have found them to come in VERY handy when wanting to try something out, explain something, or start new projects.
 
@@ -42,9 +42,10 @@ Here’s a list of situations where having some templates at your fingertips com
 * **Quickly try new ideas** — if you want to do an experiment with a new approach or see how something will fit in to your applications, it’s very handy to instantiate your own templates versus the base .NET ones – you have more things set up already like logging and security.
 
 ## The “Experience” You Should Seek to Achieve
+
 When creating a template pack, you are trying to make things easier down the road for yourself AND for other developers who may have occasion to use your template pack. So keep this in mind when creating them. So you can see more clearly what I’ve got in mind when I say this, I’d strongly suggest you try out the template pack I just created for yourself.
 
-The template pack I created is here: https://github.com/dahlsailrunner/knowyourtoolset-templates
+The template pack I created is here: <https://github.com/dahlsailrunner/knowyourtoolset-templates>
 
 The readme includes a badge / link to the package on NuGet, and two templates:
 
@@ -228,7 +229,7 @@ These are almost like any other project you would create. The main differences a
 
 The content you create in the templates directory will become the foundation for your templates. To create the templates in the pack above, I used Visual Studio with **File->New project/solution** and created both the `KnowYourToolset.Package` template and the `KnowYourToolset.BackEnd` template.
 
-**PRO TIP 1:** Include a “.” in your project/solution name! If you don’t include a “.” in the project / solution name, and someone provides a `-o` parameter value of “MyOrganization.MyDomain” (with a “.” in it), the templating engine has trouble renaming things properly. For more information, see this page: https://github.com/dotnet/templating/wiki/Naming-and-default-value-forms
+**PRO TIP 1:** Include a “.” in your project/solution name! If you don’t include a “.” in the project / solution name, and someone provides a `-o` parameter value of “MyOrganization.MyDomain” (with a “.” in it), the templating engine has trouble renaming things properly. For more information, see this page: <https://github.com/dotnet/templating/wiki/Naming-and-default-value-forms>
 
 **PRO TIP 2:** Keep these projects / solutions debug-able and buildable! As I was developing the templates above, I would run and debug them in Visual Studio just like any other project. The names are a little “meta” to be sure, but the general experience is the same and this enables you to modify the templates with more confidence and simplicity.
 
@@ -327,7 +328,7 @@ Additionally, the SpecialCustomOperations element lets us modify the contents of
 Make sure you keep your templaate projects runnable / debug-able if you are using conditional items!
 {{% /notice %}}
 
-For more information about the available options here (I definitely haven’t covered them all, see the wiki here: https://github.com/dotnet/templating/wiki (especially the page called **Reference for template.json**).
+For more information about the available options here (I definitely haven’t covered them all, see the wiki here: <https://github.com/dotnet/templating/wiki> (especially the page called **Reference for template.json**).
 
 ### Instructions and Readme
 

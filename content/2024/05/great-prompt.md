@@ -1,7 +1,7 @@
 ---
 title: "A Great Prompt Experience" 
 date: 2024-05-28T05:51:55-05:00 
-description: "A useful setup for Windows Terminal or other shell that enables a great and fun prompt experience." 
+summary: "A useful setup for Windows Terminal or other shell that enables a great and fun prompt experience." 
 codeMaxLines: 30 .
 codeLineNumbers: true 
 thumbnail: "/images/oh-my-posh.png" 

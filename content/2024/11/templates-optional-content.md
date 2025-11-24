@@ -1,7 +1,7 @@
 ---
 title: ".NET Templates with Optional Content" 
 date: 2024-11-28T15:29:04-05:00 
-description: "Updating some .NET templates that use the templating enging and GitHub actions for NuGet packages and API projects to include Aspire, and choice of database to use, and an optional UI using the BFF security pattern with
+summary: "Updating some .NET templates that use the templating enging and GitHub actions for NuGet packages and API projects to include Aspire, and choice of database to use, and an optional UI using the BFF security pattern with
 the Duende BFF libraries." 
 featured: true 
 toc: true

@@ -1,7 +1,7 @@
 ---
 title: "Hello, AI World and Streaming Content Between ASP.NET APIs and Angular" 
 date: 2025-01-11T15:29:04-05:00 
-description: "Getting a basic chat response from Azure OpenAI, providing it
+summary: "Getting a basic chat response from Azure OpenAI, providing it
 as a streamed response from an ASP.NET API, and then receiving and displaying
 it while streaming in an Angular app." 
 featured: true 

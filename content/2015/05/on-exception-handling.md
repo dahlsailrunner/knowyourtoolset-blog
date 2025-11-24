@@ -1,7 +1,7 @@
 ---
 title: "On Exception Handling" # Title of the blog post.
 date: 2015-05-29T14:22:50-05:00 # Date of post creation.
-description: "Article description." # Description used for search engine.
+summary: "Some thoughts about properly doing exception handling in .NET applications." # Description used for search engine.
 #thumbnail: "/images/path/thumbnail.png" # Sets thumbnail image appearing inside card on homepage.
 #shareImage: "/images/path/share.png" # Designate a separate image for social media sharing.
 codeMaxLines: 15 # Override global value for how many lines within a code block before auto-collapsing.
@@ -31,9 +31,11 @@ I have two primary recommendations for good exception handling:
 * **Only catch exceptions outside of the global handlers when either you need to, or you are *adding value***
 
 ## Recommendation 1: Use global exception handlers when you can
+
 Global exception handlers take different shapes based on the type of application you’re running:
 
 ### ASP.Net Web applications
+
 A global exception handler within an ASP.Net web app is usually just placed in the `global.asax.cs` file and looks something like the listing below (MVC is slightly different but very similar in nature — the key point is to get the exception with the Server.GetLastError().GetBaseException() method, log the exception somehow, and then redirect the user to a graceful page that is not the yellow screen of death:
 
 ```csharp
@@ -64,9 +66,11 @@ protected void Application_Error(object sender, EventArgs e)
 ```
 
 ### Console Application
+
 Console apps are sometimes little workhorses for little jobs that just need to run every so often without a user interface, so I think they bear mentioning here. A global exception handler for a console app is basically a `try / catch` block in the `Main` method. When caught here, the exception should be logged and then the app could exit with some kind of non-zero return code that indicates the nature of the error.
 
 ### WPF Desktop Application
+
 A Windows Presentation Foundation application takes a little more code (as shown below), but the concept is similar. Grab the exception, log it, and tell the user in a friendly way that something bad happened.
 
 ```csharp
@@ -120,11 +124,13 @@ public partial class App
 ```
 
 ### Web API apps
+
 Web API apps are a place where you most likely want to do exception shielding — just sending an generic “error” message with an HTTP error code to the caller of your API so that no detailed data like server names, procedure names, etc get included in the error message. But if you want to support the caller who received the error, you probably also will want to have logged the entire exception and be able to associate a specific failed request reported by a caller to the actual error recorded in your logs.
 
 A global exception handler and logger (this was new functionality that could be leveraged in Web API v2) comes to our rescue to accomplish these goals.
 
-Three steps: 
+Three steps:
+
 * Define your custom exception logger
 * Define your custom exception handler
 * Modify the `WebApiConfig.cs` file in your `App_Start` folder to use your custom exception logic
@@ -199,7 +205,8 @@ A sample custom exception handler implementation is shown here, inheriting from 
 ```
 
 An exception encountered by the calling user then is returned like this:
-*  **Response Body:** Oops! Sorry! Something went wrong.Please contact our support team so we can try to fix it. Error ID: 842a8a6c-a2a4-4f48-8f37-93a375857093
+
+* **Response Body:** Oops! Sorry! Something went wrong.Please contact our support team so we can try to fix it. Error ID: 842a8a6c-a2a4-4f48-8f37-93a375857093
 * **Response Code:** 500
 
 The last step to get all of this actually wired in to your Web API is to update the `WebApiConfig.cs` file in `App_Start`:
@@ -208,12 +215,15 @@ The last step to get all of this actually wired in to your Web API is to update 
 config.Services.Replace(typeof(IExceptionHandler), new CustomApiExceptionHandler());
 config.Services.Add(typeof(IExceptionLogger), new CustomApiExceptionLogger());
 ```
+
 That’s it! Now *all* of the methods within your Web API project will automatically handle and log exceptions with lots of helpful details.
 
 ### WCF Service Libraries
+
 I’m not aware of anything specific for global exception handlers within a WCF service library application, so each method should have its own try / catch block utilizing a similar exception shielding technique as described in the Web API section above. Main idea: catch the exception, add an “error id” to it and then log it completely, then turn around and send a generic error/exception (WCF works well with FaultExceptions) to the caller that includes the error id for reference.
 
 ## Recommendation 2: Only catch exceptions outside of the global handlers when you can add value, or you when you need to based on the application
+
 ***Adding value*** usually means providing additional details that the global exception handler won’t have. These are often things like input parameters to a called method or some kind of derived value that causes the failure. In these cases the exception can be wrapped with a new exception or updated with additional data and then thrown/rethrown.
 
 Note that an exception looks like has the following properties (screenshot taken from the [MSDN documentation for the Exception class](https://msdn.microsoft.com/en-us/library/system.exception(v=vs.110).aspx)):
@@ -236,9 +246,11 @@ public void MethodWithParameters(string questionableParam)
     }
 }
 ```
+
 You might favor wrapping a caught exception with a more fully descriptive exception of your own. Again — I would not recommend replacing the exception unless you are shielding — and then only AFTER you’ve logged the unmodified original exception and any additional data you add.
 
 To do this, you create and throw a new exception, using the constructor with (string, Exception) as inputs — you use the originally caught exception as the Exception parameter and any new descriptive text as the string parameter for the new exception. See the example below.
+
 ```csharp
 public void MethodWithParameters(string questionableParam)
 {
@@ -271,6 +283,7 @@ catch (Exception ex)
 The assumption in the code above is that the last three lines actually are items on the ASPX page that will show themselves to the user.
 
 ## Wrapping it up
+
 Well, that’s it. Maybe more than you ever wanted to know about exceptions. The main ideas are basically that it you put some framework in place up front in your applications to globally handle exceptions, you can minimize your code touchpoints after that without sacrificing any good information being captured and hooked on to the exceptions as they are thrown. There ***are*** still times when you need to catch exceptions manually, but they are very specific and easily identifiable once you know what you’re looking for.
 
 Enjoy!

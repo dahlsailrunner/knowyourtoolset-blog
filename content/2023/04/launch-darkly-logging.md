@@ -1,7 +1,7 @@
 ---
 title: "Using Serilog Logging for LaunchDarkly" # Title of the blog post.
 date: 2023-04-08T05:51:55-05:00 # Date of post creation.
-description: "Configuring LaunchDarkly to use Serilog (via Microsoft.Extensions.Logging) for its Logging. Uses an IServiceProvider created from an IServiceCollection." # Description used for search engine.
+summary: "Configuring LaunchDarkly to use Serilog (via Microsoft.Extensions.Logging) for its Logging. Uses an IServiceProvider created from an IServiceCollection." # Description used for search engine.
 codeMaxLines: 30 # Override global value for how many lines within a code block before auto-collapsing.
 codeLineNumbers: true # Override global value for showing of line numbers within code block.
 thumbnail: "/images/ld-log-entry.png" # Sets thumbnail image appearing inside card on homepage.

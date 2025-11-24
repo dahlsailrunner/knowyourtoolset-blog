@@ -1,7 +1,7 @@
 ---
 title: "ASP.NET Core APIs: Getting Swashbuckle to work with Auth0" # Title of the blog post.
 date: 2022-07-04T05:51:55-05:00 # Date of post creation.
-description: "Updating ASP.NET Core Swashbuckle OAuth2 options to support authentcation with Auth0 and prevent invalid_token JWT errors" # Description used for search engine.
+summary: "Updating ASP.NET Core Swashbuckle OAuth2 options to support authentcation with Auth0 and prevent invalid_token JWT errors" # Description used for search engine.
 codeMaxLines: 15 # Override global value for how many lines within a code block before auto-collapsing.
 codeLineNumbers: false # Override global value for showing of line numbers within code block.
 thumbnail: "/images/execute-api.png" # Sets thumbnail image appearing inside card on homepage.

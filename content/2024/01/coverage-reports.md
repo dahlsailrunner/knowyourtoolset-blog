@@ -1,7 +1,7 @@
 ---
 title: "Code Coverage Reports for .NET Projects" 
 date: 2024-01-28T01:51:55-05:00 
-description: "Generating local code coverage reports, and getting pipelines set up to evaluate coverage." 
+summary: "Generating local code coverage reports, and getting pipelines set up to evaluate coverage." 
 codeMaxLines: 30 .
 codeLineNumbers: true 
 thumbnail: "/images/coverage-report.png" 
@@ -148,7 +148,7 @@ There are many types of reports available but `Html` is a good place
 to start.
 
 {{% notice note "Report Formats" %}}
-Here's a list of the report formats from the [docs](https://github.com/danielpalme/ReportGenerator), which you can separated by semicolon: 
+Here's a list of the report formats from the [docs](https://github.com/danielpalme/ReportGenerator), which you can separated by semicolon:
 Badges, Clover, Cobertura, CsvSummary, MarkdownSummary,
 MarkdownSummaryGithub, MarkdownDeltaSummary, OpenCover,
 Html, Html_Light, Html_Dark, Html_BlueRed, HtmlChart, HtmlInline,

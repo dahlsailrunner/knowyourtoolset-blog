@@ -1,7 +1,7 @@
 ---
 title: "Integration Testing for ASP.NET APIs (3/3) - Auth" 
 date: 2024-01-25T05:51:55-05:00 
-description: "Using some custom authentication middleware to perform automated integration tests against an ASP.NET Core API" 
+summary: "Using some custom authentication middleware to perform automated integration tests against an ASP.NET Core API" 
 codeMaxLines: 30 .
 codeLineNumbers: true 
 toc: true
@@ -355,7 +355,7 @@ public async Task NonAdminCannotCreateProduct(string role)
 }
 ```
 
-## Write Some Tests!
+## Write Some Tests
 
 This series of posts offered up some guidance and suggestions
 about how to create some effective and easy-to-read integration

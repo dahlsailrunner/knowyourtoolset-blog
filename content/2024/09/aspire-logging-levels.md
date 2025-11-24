@@ -1,7 +1,7 @@
 ---
 title: "Using Shared Logging Levels with .NET Aspire" 
 date: 2024-09-13T05:11:55-05:00 
-description: "Setting logging levels during local development for your entire distributed application easily with .NET Aspire." 
+summary: "Setting logging levels during local development for your entire distributed application easily with .NET Aspire." 
 codeMaxLines: 30 .
 codeLineNumbers: true 
 toc: true

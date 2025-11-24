@@ -1,7 +1,7 @@
 ---
 title: "Cancellation Tokens in ASP.NET APIs" # Title of the blog post.
 date: 2023-05-04T02:51:55-05:00 # Date of post creation.
-description: "The use case and benefit of cancellation tokens in ASP.NET APIs" # Description used for search engine.
+summary: "The use case and benefit of cancellation tokens in ASP.NET APIs" # Description used for search engine.
 codeMaxLines: 30 # Override global value for how many lines within a code block before auto-collapsing.
 codeLineNumbers: true # Override global value for showing of line numbers within code block.
 thumbnail: "" # Sets thumbnail image appearing inside card on homepage.
