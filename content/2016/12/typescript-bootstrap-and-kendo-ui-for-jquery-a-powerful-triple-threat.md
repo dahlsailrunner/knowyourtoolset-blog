@@ -1,7 +1,7 @@
 ---
 title: "TypeScript, Bootstrap and Kendo UI for jQuery - a powerful triple-threat!" # Title of the blog post.
 date: 2016-12-05T11:05:20-05:00 # Date of post creation.
-description: "Article description." # Description used for search engine.
+summary: "Using the combination of TypeScript, Bootstrap and Kendo UI to improve UX functionality on websites." # Description used for search engine.
 thumbnail: "/images/form-awesome.png" # Sets thumbnail image appearing inside card on homepage.
 shareImage: "/images/form-awesome.png" # Designate a separate image for social media sharing.
 codeMaxLines: 15 # Override global value for how many lines within a code block before auto-collapsing.
@@ -14,11 +14,13 @@ tags:
 ---
 
 # Introduction
+
 Creating great front-end web user experiences can be very intimidating – from good visual design, good user-friendly form components and elements (like date-pickers, combo boxes, etc), responsive design, and AJAX interactions. By leveraging the technology within TypeScript, Bootstrap, and Kendo UI for jQuery you can create awesome user experiences that will make visiting your site a joy for users rather than a burden.
 
 All of the code and a working project can be found in [my GitHub repository](https://github.com/dahlsailrunner/FormAwesome).
 
 ## Background
+
 I come from a background of ASP.NET server-side web technologies like WebForms and MVC. You can do AJAX-y kind of things there, but you really have to think about it. The technologies I’m describing here are a GREAT way to also start to bridge the gap toward full SPA-type applications using larger frameworks like Angular and Aurelia. Also, if you’ve started to add JavaScript code to your web pages, it can quickly get out of control and very hard to maintain if you have complex logic and interactions. The technologies here provide some *awesome* benefits that help guide you down the path to better user experiences. They include:
 
 * Awesome layout and styling elements from Bootstrap — this enables responsive design (i.e. mobile and desktop-friendly layouts on your pages)
@@ -33,6 +35,7 @@ This post is not an exhaustive exploration of all of the themes, components, or 
 {{% /notice %}}
 
 ## Setup
+
 Ultimately, you can perform the setup however you want. At some point, you need the following libraries in your project:
 
 * jQuery (I’m using 3.1.1 in this post)
@@ -50,12 +53,14 @@ bower install kendo-ui-core --save
 Once you’ve gotten the package installed, it’s time to set up the TypeScript. Install it from the [TypeScript language site](http://www.typescriptlang.org/#download-links) if you don’t already have it.
 
 Then to get the typings files for our included libraries: you need to have the typings node module installed (step 1 below):
+
 ```
 npm install typings --global
 typings install dt~jquery --global --save
 typings install dt~bootstrap --global --save
 typings install dt~kendo-ui --global --save
 ```
+
 Lastly, add a `tsconfig.json` to configure the TypeScript compiler for your project. It can look like the code below for you to get started.
 
 ```json
@@ -76,6 +81,7 @@ Lastly, add a `tsconfig.json` to configure the TypeScript compiler for your proj
 ```
 
 ## Hello World, View Model Style
+
 A few preliminary explanations are in order regarding how these different components all wire together.
 
 You will have a view — generally the same cshtml that that you would otherwise write. But in our case we won’t really have ANY JavaScript on the page other than the view models we will be including. As an aside, this is better for tight security policies because you won’t need “unsafe inline” for your JavaScript. Woo hoo!
@@ -86,6 +92,7 @@ Steps to get all of this set up for a little “hello, world” action:
 
 1. Identify or create a div on your view (page) that will serve as the root div to which you will bind a view model.
 1. Create a TypeScript file to hold your view model. Add typings refs for kendo and jquery, extend from `kendo.data.ObservableObject`, add the constructor, and an iffy to bind the model.
+
 ```typescript
 /// <reference path="../typings/globals/jquery/index.d.ts" />
 /// <reference path="../typings/globals/kendo-ui/index.d.ts" />
@@ -103,15 +110,19 @@ $(function () {
     kendo.bind($("#mainContainer"), viewModel);
 });
 ```
+
 3. Save your view model (the typescript file). If everything is set up properly, you should also now have a JS file next to the TS file on your file system. (it does not automatically get added to the project).
 4. Add a script tag referencing the JS file to your view
 5. Add some code that shows your view model is bound properly! This is where it gets **F U N**.
 
 This step requires some VIEW code and some VIEW MODEL code. For the VIEW code, add a div like this to your HTML:
+
 ```html
 <div class="alert alert-success" data-bind="html: helloViewModel"></div>
 ```
-Regarding the `data-bind` syntax we added to the view, we are binding the `helloViewModel` field of the view model to the HTML content of the bound element, so the rendering will end up looking like 
+
+Regarding the `data-bind` syntax we added to the view, we are binding the `helloViewModel` field of the view model to the HTML content of the bound element, so the rendering will end up looking like
+
 ```html
 <div class="alert alert-success">{value of viewModel.helloViewModel}</div>.
 ```
@@ -136,6 +147,7 @@ You should see something that looks like this when you run:
 ![::img-center img-shadow](/images/hello-viewmodel.png)
 
 ## Add Some Kendo Form Elements
+
 As noted, now that everything is set up, it starts getting pretty fun, and the limits are the controls available and your imagination.
 
 A couple of nice first quick hits are to add a dropdown list and a date picker. Lets say we’d like to initialize the value of the drop-down picker in the view model (this could be from an AJAX request) and then fire a method on the view model when the drop-down value changes. All of this is SUPER-EASY.
@@ -158,6 +170,7 @@ We could have bound the options for the dropdowns via the `source` binding — a
 {{% /notice %}}
 
 For the view model code, try the following (which just expands the last version of the view model):
+
 ```typescript
 export class ViewModel extends kendo.data.ObservableObject {
         ddChoice: string;
@@ -183,9 +196,11 @@ Note that there isn’t a value on the view model to hold the value of the datep
 For more details about the data- syntax you would use in different situations, see [Know Your Resources]({{< ref "#know-your-resources" >}}) below, where I point out the data- section of the Kendo documentation for you.
 
 ### Add a List Using Templates
+
 So Bootstrap offers a nice dropdown button, and I wanted to see if I could bind drop-down options to something I set up inside the view model (which ultimately could be an AJAX API call, or whatever else. We will discuss the view, the view model, and the template in detail below.
 
 #### The View
+
 For this, I started with the basic Bootstrap HTML syntax for a drop-down button, shown below, and then added the binding markup for the source of the options and the template.
 
 ```html
@@ -201,21 +216,23 @@ For this, I started with the basic Bootstrap HTML syntax for a drop-down button,
     </div>
 </div>
 ```
-Note two things about the above code block — the `data-bind` and `data-template` attributes, as well as the two commented 
-out `<a>` tags. An `<a>` tag like the commented out ones is what we are trying to create — except that when the option is 
-clicked we want to add an object (a new "shelf") to a list we are watching — a Kendo `ObservableArray`; to do this, we want 
+
+Note two things about the above code block — the `data-bind` and `data-template` attributes, as well as the two commented
+out `<a>` tags. An `<a>` tag like the commented out ones is what we are trying to create — except that when the option is
+clicked we want to add an object (a new "shelf") to a list we are watching — a Kendo `ObservableArray`; to do this, we want
 to bind the `click` event to a function on the view model.
 
 #### The View Model
-In the view model code below, the `StringValue` class was created because I was not able to figure out how to bind Kendo template content to a 
-simple string array. By creating the `StringValue` class with a single field called `stringValue` I was able to wire up the template 
+
+In the view model code below, the `StringValue` class was created because I was not able to figure out how to bind Kendo template content to a
+simple string array. By creating the `StringValue` class with a single field called `stringValue` I was able to wire up the template
 binding with no trouble at all.
 
-The `ViewModel` class is where everything happens. The constructor method populates the `shelfOptions` field with the returned array 
-of `StringValue` items in the method below — this could pretty easily be the returned content from an API. Also in the constructor 
+The `ViewModel` class is where everything happens. The constructor method populates the `shelfOptions` field with the returned array
+of `StringValue` items in the method below — this could pretty easily be the returned content from an API. Also in the constructor
 is the initialization of an `ObservableArray` that we will add to when the drop-down button choice is clicked.
 
-We have a method on the view model called addNewShelf that will be invoked when a drop-down choice is made. This method creates a new `Shelf` object 
+We have a method on the view model called addNewShelf that will be invoked when a drop-down choice is made. This method creates a new `Shelf` object
 and adds it to the `ObservableArray` that we initialized in the constructor.
 
 ```typescript
@@ -256,6 +273,7 @@ export class ViewModel extends kendo.data.ObservableObject {
 ```
 
 #### The Template
+
 A Kendo template is created with the use of a script tag, giving it an id attribute that is used to reference the template, and then defining content.
 
 The content of the template below is just the drop-down option for the Bootstrap button group — with data bindings for its HTML content (the stuff that will be placed between the tag markers) and the click method.
@@ -266,7 +284,8 @@ The content of the template below is just the drop-down option for the Bootstrap
 </script>
 ```
 
-## Going further….
+## Going further…
+
 You may have noticed that the `addNewShelf` method adds an item to an `ObservableArray`. If so, good on ya’! 🙂
 The div that provides a placeholder for viewing the items in that `ObservableArray` is as follows:
 
@@ -277,7 +296,8 @@ I added another library for some of the code you’ll see below — it’s [Font
 ```html
 <div id="mediaShelfListing" data-bind="source: mediaShelves"
                             data-template="shelfTemplate"></div>
-```                            
+```
+
 The `mediaShelves` property is the `ObservableArray` from the `ViewModel`, and we added a `Shelf` object to it, which is a bit more of a full-blown class.
 The `Shelf` class itself was defined in another TypeScript file and is shown here:
 
@@ -361,6 +381,7 @@ This is what it looks like with some basic choices and data entry done:
 ![::img-shadow img-med img-center](/images/form-awesome.png)
 
 ## Know Your Resources
+
 One of the most important tools at your disposal is the online documentation and resources around this technology.
 
 The Kendo documentation and resources are the most complex, and here are some of the key resources that I continue to go back to regularly:
@@ -374,6 +395,7 @@ The Kendo documentation and resources are the most complex, and here are some of
 To understand more about the differences between the open-source version of the Kendo library versus the professional one, see the [Kendo Open Source information page](http://www.telerik.com/kendo-ui/open-source-core%20(product%20page)).
 
 ## Conquer the World
+
 Between the Bootstrap layout, styling, and components, along with the Kendo UI framework and open-source controls, you have a LOT of tools at your disposal to make the creation of great user experiences a snap! And by using TypeScript, you can get strong typing to provide you with design-time rather than run-time checking of MANY of the types of problems that you might otherwise encounter only if/when a line of code is executed.
 
 Happy coding!!

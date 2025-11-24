@@ -1,7 +1,7 @@
 ---
 title: "Manual ORM via ADO.Net when other platforms aren't available" # Title of the blog post.
 date: 2015-04-25T14:42:31-05:00 # Date of post creation.
-description: "A way to achieve some ORM functionality without using Entity Framework or NHibernate" # Description used for search engine.
+summary: "A way to achieve some ORM functionality without using Entity Framework or NHibernate" # Description used for search engine.
 codeMaxLines: 10 # Override global value for how many lines within a code block before auto-collapsing.
 codeLineNumbers: false # Override global value for showing of line numbers within code block.
 figurePositionShow: true # Override global value for showing the figure label.
@@ -20,7 +20,7 @@ Sometimes you come across situations where it is inappropriate to use a higher-l
 This post will show how to turn ADO.Net DataTables and DataSets into strongly typed custom .Net classes using a little bit of reflection. I will focus on the ADO.Net methods that return a result set of some sort or another. The starting point for my approach (and the initial idea) came from an article I read in CODE Magazine by Paul D Sheriff titled [Creating Collections of Entity Objects](http://www.codemag.com/Article/1305031).
 
 {{% notice info "Regarding Performance" %}}
-You may have come across information that states that reflection is slow and can cause performance problems. I work with a fairly large-scale enterprise application and we use code like this quite a bit without any real perceived pain. Unless you are dealing with very heavy loads running through code like this, you probably won’t even notice a difference between it and more traditionally hard-coded ADO.NET DataTable work. A general rule for me is to “program it easily first and evaluate performance when needed.” (see 
+You may have come across information that states that reflection is slow and can cause performance problems. I work with a fairly large-scale enterprise application and we use code like this quite a bit without any real perceived pain. Unless you are dealing with very heavy loads running through code like this, you probably won’t even notice a difference between it and more traditionally hard-coded ADO.NET DataTable work. A general rule for me is to “program it easily first and evaluate performance when needed.” (see
 [Rule 8 of my Guiding Principles]({{< ref "/2015/03/guiding-principles-for-programmers#8-write-efficient-code--and-address-performance-when-you-need-to" >}})).
 {{% /notice %}}
 
@@ -29,6 +29,7 @@ For this discussion, I will start with an example and then expand it to addition
 The example is that I want to execute a stored procedure and have its result set returned as a strongly type list to a calling method. For simplicity I’ll just be discussing from the standard AdventureWorks database.
 
 Here is a custom stored proc that I’ll start with:
+
 ```sql
 CREATE PROCEDURE [Person].[spGetSomeContacts]   
 AS
@@ -41,7 +42,9 @@ SELECT TOP 100
     ,c.ModifiedDate 
 FROM Person.Contact c
 ```
+
 This is admittedly a simple and not-likely-production proc, but it will serve our example just fine. So now (again, just as an example), let’s say we have a C# class that looks something like this:
+
 ```csharp
 public class CustomContact 
 {
@@ -53,6 +56,7 @@ public class CustomContact
     public bool IsBrandNew { get; set; }
 }
 ```
+
 Couple of key points to note here:
 
 * The `Phone` field selected in the stored proc doesn’t seem to have a corresponding property on the class.
@@ -200,12 +204,12 @@ public class CollectionHelper
 }
 ```
 
-It’s definitely worth explaining some of the above method a bit. The first things the method does is to create an empty list of type `T` and get 
-the list of properties on type `T` (in the props variable). Then in loops through the `DataTable`’s rows and creates a new `T` to add to the list. At this 
-point it loops through the properties on the object to see if the `DataTable` contains a column with the same name as the current property. If it doesn’t, 
-it simply moves on to the next property. If it does, we set the value of the current `T`’s property to the value of the data column. Note that there is 
-different logic for different C# types, as well as some specific handling for nullable types and null values. Of additional note is that if 
-you have a complex type as one of your properties and that is returned by a stored procedure as xml text, this function will 
+It’s definitely worth explaining some of the above method a bit. The first things the method does is to create an empty list of type `T` and get
+the list of properties on type `T` (in the props variable). Then in loops through the `DataTable`’s rows and creates a new `T` to add to the list. At this
+point it loops through the properties on the object to see if the `DataTable` contains a column with the same name as the current property. If it doesn’t,
+it simply moves on to the next property. If it does, we set the value of the current `T`’s property to the value of the data column. Note that there is
+different logic for different C# types, as well as some specific handling for nullable types and null values. Of additional note is that if
+you have a complex type as one of your properties and that is returned by a stored procedure as xml text, this function will
 attempt to deserialize the object and set the property.
 
 Now that we have a collection builder, now we can add an overload to our stored proc wrapper that will execute the proc and return us a strongly-typed generic list.
@@ -230,7 +234,9 @@ exsp.Execute(out contactList);
 Note that we can use the exact same technique for any stored proc returning a list of objects now. Sweet!!!
 
 To go further we can add a couple of additional overloads which may help us.
+
 1. Get a single object
+
 ```csharp
 public void Execute<T>(out T output, Tid myTid = null)
 {
@@ -239,6 +245,7 @@ public void Execute<T>(out T output, Tid myTid = null)
     return tempList.FirstOrDefault();
 }
 ```
-2. Updating the properties on an already-instantiated object. This is a little trickier, but is relatively 
-simple using the approach laid out above. Stay tuned for a more complete discussion of the entire stored proc wrapper — 
+
+2. Updating the properties on an already-instantiated object. This is a little trickier, but is relatively
+simple using the approach laid out above. Stay tuned for a more complete discussion of the entire stored proc wrapper —
 which will include the exception handling hinted at by the code above as well as handling of input parameters. 🙂

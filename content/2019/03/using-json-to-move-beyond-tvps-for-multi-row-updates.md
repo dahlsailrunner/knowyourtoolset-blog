@@ -1,7 +1,7 @@
 ---
 title: "Using JSON to Move Beyond TVPs for Multi-Row Updates" # Title of the blog post.
 date: 2019-03-20T10:12:34-05:00 # Date of post creation.
-description: "Article description." # Description used for search engine.
+summary: "Using serialized JSON as an alternative to table-valued-parameters (TVPs) to simplify multi-row updates in SQL Server." # Description used for search engine.
 # thumbnail: "/images/path/thumbnail.png" # Sets thumbnail image appearing inside card on homepage.
 # shareImage: "/images/path/share.png" # Designate a separate image for social media sharing.
 codeMaxLines: 25 # Override global value for how many lines within a code block before auto-collapsing.
@@ -40,6 +40,7 @@ Desired parameters for the proc:
 * JSON for the FieldIds and Values
 
 The JSON should probably look something like this:
+
 ```json
 [
   { "FieldId": 123,
@@ -50,7 +51,9 @@ The JSON should probably look something like this:
   }
 ]
 ```
+
 ## Sproc Syntax
+
 The basic strategy with sprocs doing a batch of updates is getting the JSON into a temp table (or table variable) so that your update statement just joins to the temp table you’ve created from the JSON. Here is the syntax that can accept the parameters mentioned above and load the JSON into a table variable, and then merge the results into the actual `AccountField` table:
 
 ```sql
@@ -62,18 +65,18 @@ CREATE PROCEDURE [dbo].[AddUpdateAccountFieldFromJson] (
  BEGIN
     SET NOCOUNT ON; 
 
-    DECLARE @Source TABLE (	
-	[AccountID] [uniqueidentifier] NOT NULL,
-	[FieldID] [bigint] NOT NULL,
-	[Value] [nvarchar](max) NULL
+    DECLARE @Source TABLE ( 
+ [AccountID] [uniqueidentifier] NOT NULL,
+ [FieldID] [bigint] NOT NULL,
+ [Value] [nvarchar](max) NULL
     )
 
     INSERT INTO @Source ([AccountID],[FieldID],[Value])
     SELECT @AccountId,[FieldId],[Value]
     FROM OPENJSON(@JsonInput)
-    WITH (		
-	    [FieldId] BIGINT
-	   ,[FieldValue] NVARCHAR(MAX)                 
+    WITH (  
+     [FieldId] BIGINT
+    ,[FieldValue] NVARCHAR(MAX)                 
     )
 
 MERGE AccountField AS target  
@@ -90,6 +93,7 @@ END
 ```
 
 ## C# Code Syntax
+
 The final step in getting batch updates to work is having some code that can CALL the sproc above.
 
 You may be able to do this with an anonymous class, but here is a class definition that can surface the JSON we’re after:
@@ -101,7 +105,9 @@ public class FieldData
     public string FieldValue { get; set; }
 }
 ```
+
 Given that class, here is some code that uses Newtonsoft.JSON and Dapper to call the proc above with the inputs that we want:
+
 ```csharp
 var accountId = "1234-4567-8901";
 var listOfFieldValues = new List<FieldData> { 

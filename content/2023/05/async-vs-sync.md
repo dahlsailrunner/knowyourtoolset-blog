@@ -1,7 +1,7 @@
 ---
 title: "Async Versus Sync Code in ASP.NET APIs" # Title of the blog post.
 date: 2023-05-01T05:51:55-05:00 # Date of post creation.
-description: "The significant difference between async and sync code under load in ASP.NET APIs" # Description used for search engine.
+summary: "The significant difference between async and sync code under load in ASP.NET APIs" # Description used for search engine.
 codeMaxLines: 30 # Override global value for how many lines within a code block before auto-collapsing.
 codeLineNumbers: true # Override global value for showing of line numbers within code block.
 thumbnail: "" # Sets thumbnail image appearing inside card on homepage.
@@ -103,7 +103,7 @@ var requestParameter = ApiParams.GetNextItem(context.ScenarioInfo);
 ```
 
 The above code uses the very handy `DataFeed` functionality
-within NBomber to get a random query string parameter 
+within NBomber to get a random query string parameter
 from a list I set up for the `DataFeed`:
 
 ```C#

@@ -32,7 +32,7 @@ jobs:
           output_location: "public" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
         env: # Add environment variables here
-          HUGO_VERSION: 0.101.0
+          HUGO_VERSION: 0.148.2
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
@@ -45,3 +45,4 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_GRAY_SKY_058BF3410 }}
           action: "close"
+          app_location: "/" # App source code path

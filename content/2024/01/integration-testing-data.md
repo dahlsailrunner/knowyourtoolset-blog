@@ -1,7 +1,7 @@
 ---
 title: "Integration Testing for ASP.NET APIs (2/3) - Data" 
 date: 2024-01-23T05:51:55-05:00 
-description: "Using TestContainers, SQLite, and Postgres to perform automated integration tests against an ASP.NET Core API" 
+summary: "Using TestContainers, SQLite, and Postgres to perform automated integration tests against an ASP.NET Core API" 
 codeMaxLines: 30 .
 codeLineNumbers: true 
 toc: true
@@ -459,7 +459,7 @@ Those were the only updates needed to use Postgres!  The tests themselves don't
 change at all! You could use exactly the same technique if you were using
 a different database, including SQL Server, MySql, and more.
 
-## Next...
+## Next
 
 In the [next post](../integration-testing-auth) we'll get into how to add authentication and authorization
 logic into the tests.  

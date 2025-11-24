@@ -1,7 +1,7 @@
 ---
 title: "Put a Silver Background on Your Comments" # Title of the blog post.
 date: 2015-03-11T15:39:00-05:00 # Date of post creation.
-description: "Update your IDE to bring less attention to your comments by applying a silver background to them." # Description used for search engine.
+summary: "Update your IDE to bring less attention to your comments by applying a silver background to them." # Description used for search engine.
 thumbnail: "/images/SilverComments.png" # Sets thumbnail image appearing inside card on homepage.
 shareImage: "/images/SilverComments.png" # Designate a separate image for social media sharing.
 codeLineNumbers: false # Override global value for showing of line numbers within code block.

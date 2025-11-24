@@ -1,7 +1,7 @@
 ---
 title: "Journey to Connect-4 on Rasberry Pi 2 With Pi Sense Hat" # Title of the blog post.
 date: 2016-05-07T13:57:23-05:00 # Date of post creation.
-description: "Creating the 'Connect-4' game with some students using Python on a Rasberry Pi 2 device with the Pi Sense Hat peripheral." # Description used for search engine.
+summary: "Creating the 'Connect-4' game with some students using Python on a Rasberry Pi 2 device with the Pi Sense Hat peripheral." # Description used for search engine.
 thumbnail: "/images/check-win.png" # Sets thumbnail image appearing inside card on homepage.
 shareImage: "/images/check-win.png" # Designate a separate image for social media sharing.
 codeMaxLines: 15 # Override global value for how many lines within a code block before auto-collapsing.
@@ -30,6 +30,7 @@ If you have questions about how to get at the samples, download code, or get a P
 {{% /notice %}}
 
 ## Some background
+
 The Makers Club at the [Prairie School of DuPage](https://www.facebook.com/The-Prairie-School-of-DuPage-231587376874677/) has between 5 and 10 kids that have gotten involved in this project in one way or another — all between 9 and 15. We got started with the Sense HAT simply by exploring it sample programs and looking at the [API documentation](https://pythonhosted.org/sense-hat/api/) available for it.
 
 Of particular note were the following samples and API methods:
@@ -40,6 +41,7 @@ Of particular note were the following samples and API methods:
 After looking at these samples and a couple of others (including exploring the [Rock-Paper-Lizard-Spock code for the Sense HAT](https://github.com/TeCoEd/Rock-Paper-Scissors-Lizard-Spock-Sense-HAT-style_)), we thought that it would be fun to try to create Connect-4 using the individual LEDs on the matrix as the chip spots. So we got started!
 
 ## Getting started
+
 To get started, we wanted to create a way to “get a move”. The basic logic would be this:
 
 * Light up the top left chip with a color (red)
@@ -107,6 +109,7 @@ At this point, you should have a runnable program that will just loop from one p
 ## Building the Game
 
 ### Define the board
+
 To get started with an actual game of Connect-4, we need to have a way to keep track of the “board” that chips get dropped into — noting which color has been dropped into each individual spot on the board, or if the spot is still empty. I chose to just create a two-dimensional array as shown here:
 
 ```python
@@ -126,6 +129,7 @@ board = [
 So each empty (unoccupied) spot is just an empty string, and as players claim spots we will update the value to be either RED or BLUE (our RGB notation values noted above).
 
 ### Keeping track of the board
+
 Given the above representation of the board, we need to update the logic for “dropChip” to stop before it finds an unoccupied spot, and to update where it stopped with the appropriate color on our board as well as the LED matrix. The new code for dropChip looks is shown below. We return the row that the chip ended up in to facilitate checking for a win, explained below.
 
 ```python
@@ -150,6 +154,7 @@ def dropChip(col, p):
 ```
 
 ### Basic overall logic for the game
+
 Get the kids to describe the overall flow of the game before getting too deeply in the details. A snippet above had a start of the logic:
 
 * Get a move from player
@@ -159,6 +164,7 @@ Get the kids to describe the overall flow of the game before getting too deeply 
 You can do the above infinitely, but you will run out of board spaces and you haven’t included win checking. So basically the only change is to check for a win after dropping the chip, and announce a winner and quit if you found a win. If you didn’t, check to make sure the board isn’t full. If it is, announce a tie and quit. If it isn’t, then switch players and repeat.
 
 ### Checking for a win
+
 This is one of the great learning opportunities of this project — I’ll describe more later, but what it comes down to is getting the kids to describe precisely how they know if someone has won the game when a chip is dropped. Once you agree on how to logically check (there is a right answer here), then you need to turn that into code (there are lots of ways to do this).
 
 There are four ways to win: horizontally, vertically, top-left to bottom-right, and top-right to bottom-left. You need to check each of these directions for continuous values of the dropped chip color. Not much ambiguity here — this is what you need to do. The question THEN becomes how you code the logic, and we came up with a solution that works (there are certainly others).
@@ -242,6 +248,7 @@ def countAdjacent(p, c, r, yChange, xChange):
 ```
 
 ## Learning moments for the kids
+
 Overall, this project is an excellent learning experience for kids. Here are some notes.
 
 * **Writing code based on examples and API documentation:** The “Getting Started” code above is really just taking the examples that were included with the Sense HAT and customizing them based on some new “requirements.” The code is not much of a stretch beyond the examples themselves, but you are forced to think about exactly what you want to do (and not do – in the case of ignoring up / down movements on the joystick) as well as understand the input parameters to the methods (to display different colors for the different players).
@@ -251,11 +258,13 @@ Overall, this project is an excellent learning experience for kids. Here are som
 * **Structuring code:** One of the things I talked about with the kids was the need to try and keep code readable, and to use different functions for things whenever possible. To name functions well and keep them more singularly-purposed (e.g. dropChip, checkForWin, etc), makes it easier to understand what the code is doing and then to make changes later.
 
 ## Code notes
+
 A couple of brief notes here about the code itself. First, the “CheckForTie” logic is incomplete — it would be easy enough to build and I will likely post an update to GitHub with the completed logic for tie checking.
 
 The big difference between the code shown above for the getMove function and the one on GitHub is that since the top row is “in play” and also what we use to move the chip for when the player chooses a column in which to place their chip, it becomes important to not let them navigate into a fully-occupied column.
 
 ## Taking it further / next steps
+
 Here are some ideas for how the code could be expanded upon from where it already is. Just in case you’re looking for more ideas. 🙂
 
 * Complete the tie-checking logic
@@ -267,11 +276,11 @@ Animate a win somehow. Ideas include flashing the whole board, flashing the winn
 
 I’m sure you can come up with other ideas — happy exploring!
 
-
 ### Links to the products used (roughly $140 total as of my writing)
+
 * **[Raspberry Pi 2 (Kit)](http://www.amazon.com/CanaKit-Raspberry-Ultimate-Starter-WiFi/dp/B00G1PNG54/ref=sr_1_11?s=pc&ie=UTF8&qid=1462642631&sr=1-11&keywords=raspberry+pi+2)** I started out by getting a full kit (a good call if you haven’t done this before) from Amazon. The kit provides a pre-loaded Micro-SD card and instructions on getting your Raspberry Pi up and running.
 * **[Raspberry Pi 3 (Kit)](http://www.amazon.com/CanaKit-Raspberry-Ultimate-Starter-Kit/dp/B01C6Q4GLE/ref=sr_1_2?s=pc&ie=UTF8&qid=1462642631&sr=1-2-spons&keywords=raspberry+pi+2&psc=1)** This is a newer version of the Raspberry Pi 2 and is faster and includes Bluetooth. This would work equally well, and if I was starting from scratch I would choose this one — but you definitely don’t need both a 2 and a 3!!
 * **[Pi Sense HAT](http://www.amazon.com/Raspberry-Pi-Sense-HAT-AstroPi/dp/B014HDG74S/ref=sr_1_1?ie=UTF8&qid=1462629257&sr=8-1&keywords=raspberry+pi+2+sense+hat)** This is the Sense HAT with the 8×8 LED matrix and a joystick — as well as a lot of other sensors that I didn’t even describe in this post!!
 
 Here’s a link that you will likely find helpful regarding getting started with the Sense HAT as well:
-https://www.raspberrypi.org/learning/getting-started-with-the-sense-hat/worksheet/
+<https://www.raspberrypi.org/learning/getting-started-with-the-sense-hat/worksheet/>

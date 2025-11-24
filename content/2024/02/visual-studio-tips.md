@@ -1,7 +1,7 @@
 ---
 title: "Visual Studio Tips and Tricks" 
 date: 2024-02-08T05:51:55-05:00 
-description: "Various small tips that can make your experience inside Visual Studio more joyful." 
+summary: "Various small tips that can make your experience inside Visual Studio more joyful." 
 codeMaxLines: 30 .
 codeLineNumbers: true 
 thumbnail: "/images/visual-studio.png" 

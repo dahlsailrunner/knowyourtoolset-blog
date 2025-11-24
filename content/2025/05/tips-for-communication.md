@@ -1,7 +1,7 @@
 ---
 title: "Tips for Effective Written Professional Communication" 
 date: 2025-05-23T15:29:04-05:00 
-description: "Helpful tips to improve the effectiveness of your written communications in business / professional settings." 
+summary: "Helpful tips to improve the effectiveness of your written communications in business / professional settings." 
 featured: true 
 toc: true
 thumbnail: "" # Sets thumbnail image appearing inside card on homepage.

@@ -1,7 +1,7 @@
 ---
 title: "Testing for the new SameSite Cookie-handling Changes" # Title of the blog post.
 date: 2020-01-09T09:59:25-05:00 # Date of post creation.
-description: "Testing applications for the new behavior change in Chrome and Chromium regarding the handling of SameSite cookies" 
+summary: "Testing applications for the new behavior change in Chrome and Chromium regarding the handling of SameSite cookies" 
 thumbnail: "/images/same-site-feature.png" # Sets thumbnail image appearing inside card on homepage.
 shareImage: "/images/same-site-feature.png" # Designate a separate image for social media sharing.
 codeMaxLines: 10 # Override global value for how many lines within a code block before auto-collapsing.
@@ -19,6 +19,7 @@ The Auth0 blog has a pretty [good summary of the changes, why they are happening
 I was trying to test out how these changes are going to affect our existing applications, and ran into problems actually reproducing the issue described. But a little digging (and a nudge to a forum from @BrockLAllen) led me to clean ways to test for the issues.
 
 ## Seeing the Behavior (Kind of)
+
 You can turn on the flag in the current version of Chrome by going to the Flags section of Chrome (chrome://flags) and toggling the “SameSite by default cookies” to Enabled (see screenshot below).
 
 ![::img-med img-center img-shadow](/images/same-site-feature.png)
@@ -32,11 +33,13 @@ What you **can** see with this behavior enabled is Developer Tools Console messa
 ![::img-shadow](/images/samesite-devtools.png)
 
 ## Seeing the Behavior (for real)
+
 You need to run a [Canary build of Chrome](https://www.google.com/chrome/canary/) with the ``--enable-features=SameSiteDefaultChecksMethodRigorously`` command line option specified.
 
 This means that you can’t just "launch" the Chrome Canary build but that you need to run it from a terminal or command line. I used the link above to download and install the canary build on my Windows machine and it was placed here: `C:\Users\edahl1\AppData\Local\Google\Chrome SxS\Application`.
 
 Then from a terminal in that directory (wherever your Chrome canary version was installed), you can run the following:
+
 ```
 ./chrome.exe --enable-features=SameSiteDefaultChecksMethodRigorously
 ```

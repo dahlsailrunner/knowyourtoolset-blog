@@ -1,7 +1,7 @@
 ---
 title: "A (Fairly) Deep Dive Into ASP.NET Identity and 10+ 'Nuggets'" # Title of the blog post.
 date: 2020-11-04T13:25:37-05:00 # Date of post creation.
-description: "A handful of useful features within ASP.NET Core Identity and how to put them to use" # Description used for search engine.
+summary: "A handful of useful features within ASP.NET Core Identity and how to put them to use" # Description used for search engine.
 toc: false # Controls if a table of contents should be generated for first-level links automatically.
 # menu: main
 #featureImage: "/images/path/file.jpg" # Sets featured image on blog post.
@@ -18,14 +18,14 @@ tags:
 
 I just recently had the privilege of creating a new course for Pluralsight called [Secure User Account and Authentication Practices in ASP.NET and ASP.NET Core](https://app.pluralsight.com/library/courses/secure-account-authentication-practices-asp-dot-net-core/), and it brought me down a path that involved a lot of exploration around how identity works in ASP.NET (and Core — I’ll just use "ASP.NET" going forward in this post unless it’s specifically worth noting here).
 
-**Just show me the code:** The completed source code for all of the items below for both ASP.NET Core and ASP.NET WebForms is here: https://github.com/dahlsailrunner/secure-authentication
+**Just show me the code:** The completed source code for all of the items below for both ASP.NET Core and ASP.NET WebForms is here: <https://github.com/dahlsailrunner/secure-authentication>
 Look at the commit history for some of the changes to the original code that built all of the below items up.
 
 {{% notice tip Tip %}}
 In my [next post]({{< ref "2020/11/moving-authentication-from-an-asp-net-site-into-identityserver4" >}}) I will move all of this ASP.NET Core Identity goodness into a standalone IdentityServer4 (OpenID-Connect / OAuth2) instance that separates the authentication concerns into an application that can support any of your applications – like SPAs, machine-to-machine auth needs, and more.
 {{% /notice %}}
 
-## More Than 10 "Nuggets" 
+## More Than 10 "Nuggets"
 
 I’ve watched many Pluralsight courses and am almost always surprised by what I call "nuggets" in courses. I may consider myself somewhat knowledgeable in an area where I’m watching a course, and then the author does something or uses something that I hadn’t considered before and that will certainly assist me in future endeavors — and it may not have even been the focal point of the course!
 

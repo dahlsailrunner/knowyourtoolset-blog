@@ -1,7 +1,7 @@
 ---
 title: "Using WireMock in Integration Tests for ASP.NET Core APIs" 
 date: 2024-01-29T01:51:55-05:00 
-description: "Use WireMock to simulate responses from external APIs you call from your own .NET API project instead of actually calling them." 
+summary: "Use WireMock to simulate responses from external APIs you call from your own .NET API project instead of actually calling them." 
 codeMaxLines: 30 .
 codeLineNumbers: true 
 toc: true

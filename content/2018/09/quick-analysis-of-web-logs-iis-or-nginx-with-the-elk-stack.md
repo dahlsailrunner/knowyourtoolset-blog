@@ -1,7 +1,7 @@
 ---
 title: "Quick Analysis of Web Logs (IIS or nginx) With the ELK Stack" # Title of the blog post.
 date: 2018-09-25T10:28:11-05:00 # Date of post creation.
-description: "Perform some quick analysis of W3C logs from IIS or nginx by using Logstash, Elasticsearch, and Kibana (the ELK stack)" # Description used for search engine.
+summary: "Perform some quick analysis of W3C logs from IIS or nginx by using Logstash, Elasticsearch, and Kibana (the ELK stack)" # Description used for search engine.
 thumbnail: "/images/kibana.png" # Sets thumbnail image appearing inside card on homepage.
 shareImage: "/images/kibana.png" # Designate a separate image for social media sharing.
 codeMaxLines: 20 # Override global value for how many lines within a code block before auto-collapsing.
@@ -14,6 +14,7 @@ tags:
 ---
 
 ## "Show me some stats!!"
+
 Recently I was trying to get some quick-and-dirty analysis of an API-based website done. The site was written in PHP and running under nginx on multiple Linux boxes (load-balanced).
 
 I wanted to be able to answer questions like this:
@@ -28,6 +29,7 @@ I have used the ELK stack (Elasticsearch / Logstash / Kibana) for things like th
 ![](/images/kibana.png)
 
 ## What was involved?
+
 The basic things I needed to make this happen were as follows:
 
 * [Docker Desktop](https://www.docker.com/products/docker-desktop) running locally on my Windows box
@@ -36,17 +38,21 @@ The basic things I needed to make this happen were as follows:
 * A `conf` file that was fed into the ELK container’s Logstash instance
 
 ## Setting it up
+
 Assuming you have Docker installed on your machine (you can get it from here if you don’t have it already), you need to obtain a container running the ELK stack. While there are a few choices, the popular [sebp/elk image](https://elk-docker.readthedocs.io/) is the one that I used.
 
 From an admin terminal, run the following:
+
 ```
 docker pull sebp/elk
 ```
+
 The next thing you need to do is note where your (unzipped) log files are.
 
 Assuming that you know that, you need to create a `conf` file — this is just a text file named `something-you-choose.conf`.
 
 That file will be used to configure logstash at the startup of the container. I’ll show my file here, then add some explanation below.
+
 ```
 input {
     file {
@@ -85,6 +91,7 @@ output {
   }
 }
 ```
+
 The input block is important, and will be used to point to the files you make available to your container (see below). I’ve specified the `/nginx-data/` path totally arbitrarily, but my files in the directory I’m going to make available are like this:
 
 * 001\access.log-{date}
@@ -98,9 +105,10 @@ In the first `grok` block (see what I did there?? 🙂 ), there are two lines th
 The last thing to note about this file is that I’m pushing events to the `logs-{date}` index — you can see this in the output block at the bottom of the file. This will become important when we open Kibana for the first time.
 
 For more information about logstash configuration files, see the excellent documentation:
-https://www.elastic.co/guide/en/logstash/current/config-examples.html
+<https://www.elastic.co/guide/en/logstash/current/config-examples.html>
 
 ## Running the container
+
 We need to mount two volumes when we run the container, one to provide the CONF file that we created, and one that will point to the directory with our nginx logfiles.
 
 Here’s the command to run it — execute from PowerShell admin prompt:
@@ -116,19 +124,23 @@ The rest are the standard args for this container – and they are pretty well d
 Note that the command above will run the container in “interactive” mode — the `-it` param — so that you can see info as it occurs in the container. If you `Ctrl-C` or close the window where you ran the command the container will stop.
 
 ## What if you screwed something up?
+
 If something went wrong, of if your `conf` file wasn’t quite right, that’s OK. It’s easy to start again. `Ctrl-C` the running container and it will stop. Then do the following to be able to see the id of the container you just stopped:
 
 ```
 docker ps -a
 ```
+
 After that, do the following with the first three letters of your container id (or the whole thing) to remove the container itself:
 
 ```
 docker rm 7xf    -- (or whatever your three letters are)
 ```
+
 Then fix whatever needs fixing, and re-run the `docker run` command from above. Iterate as necessary. 🙂
 
 ## Getting into Kibana
+
 To access Kibana, you will open a browser and go here:
 
 [http://localhost:5601](http://localhost:5601)
@@ -143,6 +155,6 @@ If you want to know more about **Discovery**, **Visualization**, and **Dashboard
 * Log 'Discovery' with Kibana
 * Log 'Visualization' and 'Dashboards' with Kibana
 
-Here’s the course: https://app.pluralsight.com/library/courses/dotnet-logging-using-serilog-opinionated-approach/table-of-contents.
+Here’s the course: <https://app.pluralsight.com/library/courses/dotnet-logging-using-serilog-opinionated-approach/table-of-contents>.
 
 Happy analyzing!

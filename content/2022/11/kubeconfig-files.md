@@ -1,7 +1,7 @@
 ---
 title: "Kubeconfig files for Multiple Kubernetes Clusters" # Title of the blog post.
 date: 2022-11-04T05:51:55-05:00 # Date of post creation.
-description: "Using a single kubeconfig file to interact with multiple Kubernetes clusters" # Description used for search engine.
+summary: "Using a single kubeconfig file to interact with multiple Kubernetes clusters" # Description used for search engine.
 codeMaxLines: 15 # Override global value for how many lines within a code block before auto-collapsing.
 codeLineNumbers: false # Override global value for showing of line numbers within code block.
 thumbnail: "/images/kubeconfig.png" # Sets thumbnail image appearing inside card on homepage.
@@ -169,7 +169,7 @@ The json is here:
           "background": "#6272a4",
           "foreground": "#ffffff",
           "leading_diamond": "\ue0b6",
-		  "trailing_diamond": "\ue0b0", 
+    "trailing_diamond": "\ue0b0", 
           "style": "diamond",          
           "type": "os"          
         },
@@ -178,9 +178,9 @@ The json is here:
           "foreground": "#ffffff",
           "powerline_symbol": "\ue0b0",    
           "style": "powerline",          
-		  "properties": {
-			  "style": "folder"		  
-		  },
+    "properties": {
+     "style": "folder"    
+    },
           "type": "path"          
         },
         {
@@ -200,11 +200,11 @@ The json is here:
         {
           "background": "#ff79c6",
           "foreground": "#ffffff",
-		  "powerline_symbol": "\ue0b0",    
+    "powerline_symbol": "\ue0b0",    
           "style": "powerline",
           
           "type": "kubectl",
-          "properties": {				
+          "properties": {    
             "prefix": " \uF1D1 "
           }
         }
