@@ -1,7 +1,7 @@
 ---
 title: "Authoring Short, Targeted Videos"
 date: 2025-11-23T16:32:15-05:00 # Date of post creation.
-summary: "UPDATED! How to create short targeted videos to show a tehcnology topic." # Description used for search engine.
+summary: "UPDATED! How to create short targeted videos to show a technology topic." # Description used for search engine.
 toc: false # Controls if a table of contents should be generated for first-level links automatically.
 # menu: main
 featureImage: "/images/authoring-short-targeted-videos/animation.png" # Sets featured image on blog post.
@@ -139,7 +139,7 @@ The whole point here is a good listening experience for the viewer – so remove
 
 ## 6: Combine video with polished audio
 
-You’ll have two "tracks" in your video editor – one for the video, and one for the audio. Set both of their starting points at the same sport, and start editing.
+You’ll have two "tracks" in your video editor – one for the video, and one for the audio. Set both of their starting points at the same spot, and start editing.
 
 * Make a least one second of "no audio" at beginning and end of video
 * Use these key editing features:
