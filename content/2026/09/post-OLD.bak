@@ -1,0 +1,106 @@
+---
+title: "TUnit, Aspire, and Playwright: A Powerful Triple Threat for Automated Testing and Agentic Workflows" 
+date: 2026-09-05T15:29:04-05:00 
+summary: "Setting up an amazing automated testing framework for a distributed application can improve both your quality and speed for human- and agent-based delivery." 
+featured: true 
+toc: true
+thumbnail: "/images/hello-ai-streaming.png" # Sets thumbnail image appearing inside card on homepage.
+shareImage: "/images/hello-ai-streaming.png" # Designate a separate image for social media sharing.
+codeMaxLines: 15 
+codeLineNumbers: false 
+figurePositionShow: true 
+tags:
+  - .NET
+  - ASP.NET
+  - C#
+  - Aspire
+  - TUnit
+  - Playwright
+  - GitHub Actions
+  - Code Coverage
+  - MTP
+---
+
+How about an awesome automated testing framework that:
+
+* Allows full testing **without deploying the application**
+* Has **complete logs and OpenTelemetry traces from the application** for each test on its own
+* Provides **detailed code coverage** information
+for all code in your application
+* Includes **screenshots and video recordings** of
+automated tests of your UI easily
+* Can be run both **locally and in a continuous
+integration (CI) pipeline** easily
+* Is **super fast**
+* Enables AI-coding agent iteration that results in successful implemetation of features that include tests and video recordings of the updated application
+
+## Overall Setup
+
+The following is what has been set up in a sample repo and is
+what I think the building blocks for an amazing test automation
+framework is.
+
+1. A TUnit test project for your unit tests
+1. A separate TUnit test proejct for each ASP.NET Core
+  app you want to test on its own (with `WebApplicationFactory`).
+1. A TUnit test project for the entire application that
+  will use the Aspire `DistributedApplicationTestingBuilder`.
+1. When running tests:
+    1. Create coverage outputs
+    1. Use a `testconfig.json` file to provide exclusions for code coverage reporting (e.g. source generated content)
+    1. Specify output directories for output files
+1. Create a coverage report using the excellent [reportgenerator]() dotnet tool
+1. Create a script that can run all of your tests locally that will:
+    1. Delete artifacts from previous runs
+    1. Run all of the tests with the above settings
+    1. Create the coverage report based on the test run output
+    1. Optionally open each of the reports for human review
+1. Create a continuous integration (CI) pipeline that will do
+  all of the above, include good information in the pipeline
+  summary, and provide the ability to download and review the
+  detailed artifacts and reports from the test run
+
+## Why TUnit as the Testing Framework?
+
+There are a LOT of reasons to like TUnit as the backbone
+of the automated testing framework for your application(s):
+
+* Adds simplicity and features to both `WebApplicationFactory`
+  and `DistributedApplicationTestingBuilder`
+* Fast - uses source-generation and not reflection; aggressive
+  parallelization by default; can be compiled for AOT for even more speed
+* Creates an excellent "results report" that shows test execution
+  details - how the tests were run - as well as showing logs, traces, and other information about each test individually
+* Uses Microsoft Testing Platform and simplifies capture of
+  code coverage details
+* Easy-to-use API that keeps tests simple but doesn't limit
+  capabiltiies
+* "Batteries included" approach: built-in mocking (including HTTP mocking) and first class integration with Playwright
+
+## Unit Tests
+
+### Interface Mocking
+
+## ASP.NET Core Appplication Tests (non-UI)
+
+### Authentication and Authorization Scenarios
+
+### Mocking External HTTP / API Requests
+
+## Full Application Tests (Aspire, Playwright)
+
+### Excluding Resources
+
+### Playwright Recordings
+
+## Coverage Reporting
+
+### Report Generation
+
+### Excluding Things
+
+## Local Excecution Script
+
+## Continous Integration Pipeline
+
+## Coding Agent Setup
