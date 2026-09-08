@@ -32,7 +32,7 @@ automated tests of your UI easily
 * Can be run both **locally and in a continuous
 integration (CI) pipeline** easily
 * Is **super fast**
-* Enables AI-coding agent iteration that results in successful implemetation of features that include tests and video recordings of the updated application
+* ***Enables AI-coding agent iteration that results in successful implemetation of features that include tests and video recordings of the updated application***
 
 Everything in this post is working code in the
 [automated-testing-aspnetcore10](https://github.com/dahlsailrunner/automated-testing-aspnetcore10)
@@ -139,15 +139,6 @@ TUnit ships first-class integration packages for each of them:
 A few API conventions show up in every snippet below, so they're worth calling
 out once:
 
-```csharp
-// Assertions are async and chainable, and a single await can check
-// multiple members of the same result.
-await Assert.That(result)
-    .Member(r => r.Errors, errors => errors.IsEmpty())
-    .And
-    .Member(r => r.IsValid, valid => valid.IsTrue());
-```
-
 * `[Test]` replaces `[Fact]` / `[TestMethod]`
 * `[Arguments(...)]` replaces `[InlineData(...)]`
 * `[Before(Test)]`, `[Before(Class)]`, `[After(TestSession)]` are the hooks
@@ -156,6 +147,16 @@ await Assert.That(result)
 * `[DependsOn(nameof(OtherTest))]`, `[NotInParallel]`, and
   `[ParallelLimiter<T>]` are the escape hatches from "everything runs in
   parallel by default"
+
+Assertions are async and chainable, and a single await can check
+multiple members of the same result.
+
+```csharp
+await Assert.That(result)
+    .Member(r => r.Errors, errors => errors.IsEmpty())
+    .And
+    .Member(r => r.IsValid, valid => valid.IsTrue());
+```
 
 One small quality-of-life thing: rather than repeating `using` statements in
 every test file, the common namespaces are declared once as `<Using>` items in
