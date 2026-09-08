@@ -21,6 +21,11 @@ tags:
   - MTP
 ---
 
+.{{% notice tip "Pluralsight Course Imminent!" %}}
+The content below is the direct result of a new Pluralsight course that I've done,
+and it's about to be published:  **Automation Testing Strategies with ASP.NET Core 10**.
+{{% /notice %}}
+
 How about an awesome automated testing framework that:
 
 * Allows full testing **without deploying the application**
